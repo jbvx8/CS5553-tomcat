@@ -97,7 +97,16 @@
                 <hints3:hintedElement xsi:type="hints3:HintedElement">
                     <hints3:target xlink:href="#componentffffff8b-c1cd5302-dc4e9232-673102cb" xsi:type="instance:XMLLink" xlink:type="simple"/>
                     <hints3:property hints3:name="glass/boundingBox" xsi:type="hints3:Property">
-                        <hints3:value hints3:data="10236,10213,100,100" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
+                        <hints3:value hints3:data="10325,10200,100,100" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                    <hints3:property hints3:name="background/color" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="197,203,255" hints3:type="org.eclipse.swt.graphics.RGB" xsi:type="hints3:PropertyValue"/>
+                    </hints3:property>
+                </hints3:hintedElement>
+                <hints3:hintedElement xsi:type="hints3:HintedElement">
+                    <hints3:target xlink:href="#componentffffff8b-ca06d86a-1e839955-67310342" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                    <hints3:property hints3:name="glass/boundingBox" xsi:type="hints3:Property">
+                        <hints3:value hints3:data="10554,10299,100,100" hints3:type="org.eclipse.swt.graphics.Rectangle" xsi:type="hints3:PropertyValue"/>
                     </hints3:property>
                 </hints3:hintedElement>
             </hints3:hintedElement>
@@ -110,6 +119,20 @@
             <changes:componentChange changes:id="componentChangeffffff8b-c1cd5303-057ddf27-673102d0" xsi:type="changes:ComponentChange" changes:type="add">
                 <changes:description xsi:type="instance:Description">New Component</changes:description>
                 <changes:component xlink:href="#componentffffff8b-c1cd5302-dc4e9232-673102cb" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </changes:componentChange>
+        </changes:changes>
+        <changes:changes changes:id="changesffffff8b-ca06d86a-c38dfaa1-67310343" changes:status="unmapped" xsi:type="changes:Changes">
+            <changes:description xsi:type="instance:Description">2018-04-15 10:57</changes:description>
+            <changes:componentChange changes:id="componentChangeffffff8b-ca06d872-35f51f06-6731034c" xsi:type="changes:ComponentChange" changes:type="add">
+                <changes:description xsi:type="instance:Description">New Component</changes:description>
+                <changes:component xlink:href="#componentffffff8b-ca06d86a-1e839955-67310342" xsi:type="instance:XMLLink" xlink:type="simple"/>
+            </changes:componentChange>
+            <changes:componentChange changes:id="componentChangeffffff8b-ca06f919-5c7265f3-67310366" xsi:type="changes:ComponentChange" changes:type="remove">
+                <changes:description xsi:type="instance:Description">Remove Component</changes:description>
+                <changes:component xlink:href="#Copy of componentffffff8b-ca06d86a-1e839955-67310342" xsi:type="instance:XMLLink" xlink:type="simple"/>
+                <changes:copyOfRemovedComponent types:id="Copy of componentffffff8b-ca06d86a-1e839955-67310342" xsi:type="types:Component">
+                    <types:description xsi:type="instance:Description">[New Component]</types:description>
+                </changes:copyOfRemovedComponent>
             </changes:componentChange>
         </changes:changes>
     </changes:archChange>
