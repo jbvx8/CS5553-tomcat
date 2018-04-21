@@ -1,12 +1,17 @@
-package comp.Server;
+package server;
 
 
 import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
+import edu.uci.isr.myx.fw.MyxUtils;
+
+import httpfileupload.IHTTPFileUpload;
 
 public class ServerArch extends AbstractMyxSimpleBrick
 {
+    public static final IMyxName msg_IHTTPFileUpload = MyxUtils.createName("httpfileupload.IHTTPFileUpload");
 
+    public IHTTPFileUpload OUT_IHTTPFileUpload;
 
 	private IServerImp _imp;
 
@@ -33,6 +38,11 @@ public class ServerArch extends AbstractMyxSimpleBrick
     }
     
     public void begin(){
+        OUT_IHTTPFileUpload = (IHTTPFileUpload) MyxUtils.getFirstRequiredServiceObject(this,msg_IHTTPFileUpload);
+        if (OUT_IHTTPFileUpload == null){
+ 			System.err.println("Error: Interface httpfileupload.IHTTPFileUpload returned null");
+			return;       
+        }
         _imp.begin();
     }
     

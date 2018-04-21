@@ -1,7 +1,7 @@
-package comp.Server;
+package server;
 
 
-import comp.Server.ServerArch;
+import server.ServerArch;
 
 public interface IServerImp 
 {

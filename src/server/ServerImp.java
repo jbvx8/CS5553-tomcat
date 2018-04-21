@@ -1,4 +1,4 @@
-package comp.Server;
+package server;
 
 import org.apache.catalina.startup.Bootstrap;
 
@@ -24,9 +24,8 @@ public class ServerImp implements IServerImp
 	    //TODO Auto-generated method stub
 	}
 	public void begin(){
-		//TODO Auto-generated method stub
-	    System.getProperties().setProperty("catalina.home", "C:\\Users\\Jackie\\Documents\\CS5553\\workspace\\tomcat\\output\\build");
-	    Bootstrap.main(new String[] {"start"});
+		System.setProperty("catalina.home", "C:\\Users\\Jackie\\Documents\\CS5553\\workspace\\tomcat\\output\\build");
+		Bootstrap.main(new String[] {"start"});
 	}
 	public void end(){
 		//TODO Auto-generated method stub

@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="true" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="org.apache.catalina.startup.Tomcat" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Tomcat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1363" y="219"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.apache.catalina.startup.HostRuleSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HostRuleSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1493" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="org.apache.catalina.startup.NamingRuleSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/NamingRuleSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="983" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.apache.catalina.startup.Tomcat.SimpleRealm" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Tomcat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="790" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <enumeration id="5" language="java" name="org.apache.catalina.startup.ClassLoaderFactory.RepositoryType" 
+    project="tomcat" file="/tomcat/java/org/apache/catalina/startup/ClassLoaderFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2084" y="614"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </enumeration>  
+  <class id="6" language="java" name="org.apache.catalina.startup.HostConfig.DeployedApplication" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HostConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="139" x="1919" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.apache.catalina.startup.SafeForkJoinWorkerThreadFactory" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/SafeForkJoinWorkerThreadFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="37" width="224" x="1697" y="219"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.apache.catalina.startup.CopyParentClassLoaderRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/CopyParentClassLoaderRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="187" x="1722" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.apache.catalina.startup.Tomcat.DefaultWebXmlListener" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Tomcat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="159" x="953" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" 
+    name="org.apache.catalina.startup.SafeForkJoinWorkerThreadFactory.SafeForkJoinWorkerThread" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/SafeForkJoinWorkerThreadFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="37" width="182" x="1697" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="org.apache.catalina.startup.Bootstrap" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Bootstrap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2228" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.apache.catalina.startup.HostConfig.DeployDescriptor" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HostConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2098" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="org.apache.catalina.startup.Catalina" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Catalina.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2587" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.apache.catalina.startup.UserConfig.DeployUserDirectory" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/UserConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="141" x="3573" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.apache.catalina.startup.HostConfig.DeployWar" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HostConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2261" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.apache.catalina.startup.PasswdUserDatabase" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/PasswdUserDatabase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="151" x="3547" y="219"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="org.apache.catalina.startup.Tomcat.ExistingStandardWrapper" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Tomcat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="171" x="1152" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="org.apache.catalina.startup.ContextConfig.DefaultWebXmlCacheEntry" 
+    project="tomcat" file="/tomcat/java/org/apache/catalina/startup/ContextConfig.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="37" width="177" x="363" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.apache.catalina.startup.CredentialHandlerRuleSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/CredentialHandlerRuleSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="170" x="1372" y="537"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="org.apache.catalina.startup.RealmRuleSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/RealmRuleSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1372" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="org.apache.catalina.startup.SetParentClassLoaderRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Catalina.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="178" x="2010" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="org.apache.catalina.startup.HostConfig.DeployDirectory" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HostConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2424" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="org.apache.catalina.startup.ContextConfig.JavaClassCacheEntry" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ContextConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="148" x="580" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="org.apache.catalina.startup.ConnectorCreateRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ConnectorCreateRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="146" x="2401" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="org.apache.catalina.startup.ExpandWar" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ExpandWar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="3226" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="org.apache.catalina.startup.Catalina.CatalinaShutdownHook" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Catalina.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="156" x="2587" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="org.apache.catalina.startup.LifecycleListenerRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/LifecycleListenerRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="147" x="1535" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="org.apache.catalina.startup.VersionLoggerListener" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/VersionLoggerListener.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="154" x="3032" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="org.apache.catalina.startup.SetNextNamingRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/SetNextNamingRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="137" x="983" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="org.apache.catalina.startup.CertificateCreateRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/CertificateCreateRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="146" x="2804" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="org.apache.catalina.startup.Tomcat.FixContextListener" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Tomcat.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="131" x="1526" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="org.apache.catalina.startup.Constants" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Constants.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2992" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="org.apache.catalina.startup.ClassLoaderFactory" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ClassLoaderFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="138" x="2044" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="org.apache.catalina.startup.Tool" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/Tool.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1656" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="org.apache.catalina.startup.SetContextPropertiesRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/SetContextPropertiesRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="172" x="1160" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="36" language="java" name="org.apache.catalina.startup.UserDatabase" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/UserDatabase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="3594" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="37" language="java" name="org.apache.catalina.startup.ContextConfig" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ContextConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1363" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="org.apache.catalina.startup.EngineRuleSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/EngineRuleSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1330" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="org.apache.catalina.startup.UserConfig" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/UserConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="3573" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="org.apache.catalina.startup.ClassLoaderFactory.Repository" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ClassLoaderFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2084" y="537"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="org.apache.catalina.startup.SetAllPropertiesRule" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/SetAllPropertiesRule.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="142" x="801" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="org.apache.catalina.startup.HomesUserDatabase" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HomesUserDatabase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="145" x="3738" y="219"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="org.apache.catalina.startup.CatalinaProperties" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/CatalinaProperties.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="130" x="2268" y="460"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="org.apache.catalina.startup.WebAnnotationSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/WebAnnotationSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="130" x="1840" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="org.apache.catalina.startup.FailedContext" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/FailedContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2992" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="org.apache.catalina.startup.EngineConfig" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/EngineConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="3389" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="org.apache.catalina.startup.ContextRuleSet" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/ContextRuleSet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="1167" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="org.apache.catalina.startup.WebappServiceLoader" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/WebappServiceLoader.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="175" x="768" y="373"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="org.apache.catalina.startup.HostConfig" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/startup/HostConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="123" x="2424" y="219"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="org.apache.catalina.startup.HostConfig.ExpandedDirectoryRemovalListener" 
+    project="tomcat" file="/tomcat/java/org/apache/catalina/startup/HostConfig.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="37" width="228" x="3155" y="296"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="51" language="java" name="org.apache.catalina.Server" project="tomcat" 
+    file="/tomcat/java/org/apache/catalina/Server.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1725" y="95"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <dependency id="52">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="45"/>  
+  </dependency>  
+  <dependency id="53">    
+    <bendpoint x="3413" y="296"/>    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <nesting id="54">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <dependency id="55">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="57">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="58">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <nesting id="59">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="17"/>  
+  </nesting>  
+  <dependency id="60">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="47"/>  
+  </dependency>  
+  <nesting id="61">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="31"/>  
+  </nesting>  
+  <nesting id="62">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="39"/>  
+  </dependency>  
+  <dependency id="64">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="37"/>  
+  </dependency>  
+  <dependency id="65">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="41"/>  
+  </dependency>  
+  <association id="67">    
+    <bendpoint x="3563" y="296"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="68" name="userConfig"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="70">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="71">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="72">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="73">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <nesting id="74">    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="40"/>  
+  </nesting>  
+  <dependency id="75">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="51"/>  
+  </dependency>  
+  <dependency id="76">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <dependency id="77">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="78">    
+    <bendpoint x="1136" y="373"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="41"/>  
+  </dependency>  
+  <association id="79">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="80" name="config"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="82">    
+    <bendpoint x="3001" y="373"/>    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="83">    
+    <bendpoint x="3542" y="296"/>    
+    <bendpoint x="3542" y="373"/>    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="84">    
+    <bendpoint x="2212" y="460"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="40"/>  
+  </dependency>  
+  <nesting id="85">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <dependency id="86">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <association id="87">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="88" name="daemon"/>      
+      <multiplicity id="89" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="90">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="15"/>  
+  </nesting>  
+  <dependency id="91">    
+    <bendpoint x="2237" y="460"/>    
+    <bendpoint x="2237" y="537"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <nesting id="92">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <dependency id="93">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="43"/>  
+  </dependency>  
+  <association id="94">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="95" name="config"/>      
+      <multiplicity id="96" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="98" name="config"/>      
+      <multiplicity id="99" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="100">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="102">    
+    <bendpoint x="2961" y="296"/>    
+    <bendpoint x="2980" y="373"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <nesting id="103">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <nesting id="104">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="23"/>  
+  </nesting>  
+  <dependency id="105">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <association id="106">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="107" name="config"/>      
+      <multiplicity id="108" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="109">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <realization id="110">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <dependency id="111">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="33"/>  
+  </dependency>  
+  <association id="112">    
+    <bendpoint x="3747" y="296"/>    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="113" name="userConfig"/>      
+      <multiplicity id="114" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="115">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <dependency id="116">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="117">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="35"/>  
+  </dependency>  
+  <dependency id="118">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="119">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <nesting id="120">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="50"/>  
+  </nesting>  
+  <dependency id="121">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="51"/>  
+  </dependency>  
+  <dependency id="122">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="123">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
+  <nesting id="124">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <dependency id="125">    
+    <end type="SOURCE" refId="38"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="126">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="44"/>  
+  </dependency>  
+  <nesting id="127">    
+    <bendpoint x="2053" y="537"/>    
+    <end type="SOURCE" refId="33"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <nesting id="128">    
+    <end type="SOURCE" refId="49"/>    
+    <end type="TARGET" refId="6"/>  
+  </nesting>  
+  <association id="129">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="130" name="deployed"/>      
+      <multiplicity id="131" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="132">    
+    <bendpoint x="2773" y="373"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <association id="133">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="134" name="hostWebXmlCache"/>      
+      <multiplicity id="135" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="136">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="29"/>  
+  </dependency>  
+  <association id="137">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="138" name="type"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="140">    
+    <bendpoint x="1809" y="373"/>    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <dependency id="141">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="142">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="47"/>  
+  </dependency>  
+  <association id="143">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="144" name="server"/>      
+      <multiplicity id="145" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="146">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="147">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="148">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="32"/>  
+  </dependency>  
+  <association id="149">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="150" name="server"/>      
+      <multiplicity id="151" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="51" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="152">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <dependency id="153">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="38"/>  
+  </dependency>  
+  <dependency id="154">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="48"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="false" package="true" initial-value="false" signature="false" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
