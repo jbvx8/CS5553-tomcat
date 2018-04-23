@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadBase.IOFileUploadException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1353" y="248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="org.apache.tomcat.util.http.fileupload.ThresholdingOutputStream" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/ThresholdingOutputStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="178" x="312" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" 
+    name="org.apache.tomcat.util.http.fileupload.FileUploadBase.FileItemIteratorImpl.FileItemStreamImpl" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1943" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadBase.SizeLimitExceededException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2574" y="424"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="org.apache.tomcat.util.http.fileupload.ParameterParser" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/ParameterParser.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="530" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="org.apache.tomcat.util.http.fileupload.RequestContext" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/RequestContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1148" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="org.apache.tomcat.util.http.fileupload.MultipartStream.IllegalBoundaryException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/MultipartStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="167" x="1354" y="444"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="org.apache.tomcat.util.http.fileupload.InvalidFileNameException" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/InvalidFileNameException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="168" x="735" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="org.apache.tomcat.util.http.fileupload.MultipartStream.ProgressNotifier" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/MultipartStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1149" y="444"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="org.apache.tomcat.util.http.fileupload.FileItem" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2624" y="553"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="11" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadBase.FileItemIteratorImpl" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1784" y="248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="org.apache.tomcat.util.http.fileupload.FileItemIterator" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItemIterator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1335" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="13" language="java" name="org.apache.tomcat.util.http.fileupload.FileUpload" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUpload.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2687" y="206"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadBase.FileUploadIOException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1989" y="248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" 
+    name="org.apache.tomcat.util.http.fileupload.FileUploadBase.FileSizeLimitExceededException" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2817" y="514"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="16" language="java" name="org.apache.tomcat.util.http.fileupload.UploadContext" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/UploadContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1148" y="248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="17" language="java" name="org.apache.tomcat.util.http.fileupload.ProgressListener" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/ProgressListener.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2033" y="711"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="18" language="java" name="org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/ByteArrayOutputStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="312" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadBase" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2294" y="74"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="org.apache.tomcat.util.http.fileupload.IOUtils" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/IOUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="943" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="21" language="java" name="org.apache.tomcat.util.http.fileupload.FileItemStream" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItemStream.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2300" y="530"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <interface id="22" language="java" name="org.apache.tomcat.util.http.fileupload.FileItemFactory" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItemFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="2895" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="23" language="java" name="org.apache.tomcat.util.http.fileupload.MultipartStream" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/MultipartStream.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1561" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="org.apache.tomcat.util.http.fileupload.FileUtils" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUtils.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1353" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="25" language="java" name="org.apache.tomcat.util.http.fileupload.FileItemHeadersSupport" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItemHeadersSupport.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="2215" y="346"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="26" language="java" name="org.apache.tomcat.util.http.fileupload.DeferredFileOutputStream" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/DeferredFileOutputStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="173" x="312" y="248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="org.apache.tomcat.util.http.fileupload.FileItemStream.ItemSkippedException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItemStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2352" y="684"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadBase.SizeException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2331" y="214"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="org.apache.tomcat.util.http.fileupload.MultipartStream.MalformedStreamException" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/MultipartStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="183" x="1561" y="444"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" 
+    name="org.apache.tomcat.util.http.fileupload.FileUploadBase.InvalidContentTypeException" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadBase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="186" x="1558" y="248"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="org.apache.tomcat.util.http.fileupload.FileUploadException" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileUploadException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1558" y="150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="org.apache.tomcat.util.http.fileupload.MultipartStream.ItemInputStream" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/MultipartStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1784" y="444"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="33" language="java" name="org.apache.tomcat.util.http.fileupload.FileItemHeaders" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/FileItemHeaders.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="165" x="1989" y="444"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="34" language="java" name="org.apache.tomcat.util.http.fileupload.disk.DiskFileItem" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/disk/DiskFileItem.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="185" x="617" y="382"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/disk/DiskFileItemFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="185" x="842" y="382"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="org.apache.tomcat.util.http.fileupload.util.LimitedInputStream" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/LimitedInputStream.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="180" x="170" y="445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="org.apache.tomcat.util.http.fileupload.util.Streams" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/Streams.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="180" x="390" y="445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <interface id="38" language="java" name="org.apache.tomcat.util.http.fileupload.util.Closeable" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/Closeable.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="180" x="170" y="543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </interface>  
+  <class id="39" language="java" name="org.apache.tomcat.util.http.fileupload.util.FileItemHeadersImpl" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/FileItemHeadersImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="58" width="180" x="610" y="445"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="org.apache.tomcat.util.http.fileupload.util.mime.QuotedPrintableDecoder" 
+    project="tomcat" file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/mime/QuotedPrintableDecoder.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="118" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="org.apache.tomcat.util.http.fileupload.util.mime.MimeUtility" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/mime/MimeUtility.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="364" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="org.apache.tomcat.util.http.fileupload.util.mime.ParseException" project="tomcat" 
+    file="/tomcat/java/org/apache/tomcat/util/http/fileupload/util/mime/ParseException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="610" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="true" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <nesting id="43">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="7"/>  
+  </nesting>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <nesting id="46">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <realization id="47">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </realization>  
+  <association id="48">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="49" name="dfos"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="51">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <realization id="52">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="22"/>  
+  </realization>  
+  <nesting id="53">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <realization id="54">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="21"/>  
+  </realization>  
+  <nesting id="55">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="27"/>  
+  </nesting>  
+  <realization id="56">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <association id="57">    
+    <bendpoint x="1530" y="346"/>    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="58" name="notifier"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="60">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <nesting id="61">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="30"/>  
+  </nesting>  
+  <realization id="62">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="38"/>  
+  </realization>  
+  <generalization id="63">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <nesting id="64">    
+    <bendpoint x="2410" y="248"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
+  <nesting id="65">    
+    <bendpoint x="2431" y="248"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="15"/>  
+  </nesting>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="28"/>  
+  </generalization>  
+  <association id="67">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="68" name="currentItem"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="71" name="fileItemFactory"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="73">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="28"/>  
+  </nesting>  
+  <generalization id="74">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="6"/>  
+  </generalization>  
+  <nesting id="75">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="11"/>  
+  </nesting>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="77">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="78" name="multi"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="80">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="81" name="headers"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="83">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="38"/>  
+  </realization>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <association id="85">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="86" name="notifier"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="89" name="listener"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="92" name="memoryOutputStream"/>      
+      <multiplicity id="93" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="94">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="29"/>  
+  </nesting>  
+  <generalization id="95">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <nesting id="97">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="3"/>  
+  </nesting>  
+  <association id="98">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="99" name="headers"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="101">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="32"/>  
+  </nesting>  
+  <association id="102">    
+    <bendpoint x="2184" y="248"/>    
+    <bendpoint x="2184" y="346"/>    
+    <bendpoint x="2184" y="444"/>    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="103" name="listener"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="105">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="33"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="true" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -117,6 +117,8 @@ import org.apache.tomcat.util.res.StringManager;
 import org.ietf.jgss.GSSCredential;
 import org.ietf.jgss.GSSException;
 
+import server.ServerArch;
+
 /**
  * Wrapper object for the Coyote request.
  *
@@ -126,6 +128,8 @@ import org.ietf.jgss.GSSException;
 public class Request implements HttpServletRequest {
 
     private static final Log log = LogFactory.getLog(Request.class);
+    
+    private ServerArch _arch;
 
     /**
      * Create a new Request object associated with the given Connector.
@@ -2790,23 +2794,29 @@ public class Request implements HttpServletRequest {
             // Create a new file upload handler
             DiskFileItemFactory factory = new DiskFileItemFactory();
             try {
-                factory.setRepository(location.getCanonicalFile());
+//                factory.setRepository(location.getCanonicalFile());
+                _arch.OUT_IHTTPFileUpload.setRepository(location.getCanonicalFile());
             } catch (IOException ioe) {
                 parameters.setParseFailedReason(FailReason.IO_ERROR);
                 partsParseException = ioe;
                 return;
             }
-            factory.setSizeThreshold(mce.getFileSizeThreshold());
+//            factory.setSizeThreshold(mce.getFileSizeThreshold());
 
-            ServletFileUpload upload = new ServletFileUpload();
-            upload.setFileItemFactory(factory);
-            upload.setFileSizeMax(mce.getMaxFileSize());
-            upload.setSizeMax(mce.getMaxRequestSize());
+//            ServletFileUpload upload = new ServletFileUpload();
+//            upload.setFileItemFactory(factory);
+//            upload.setFileSizeMax(mce.getMaxFileSize());
+//            upload.setSizeMax(mce.getMaxRequestSize());
+            
+            _arch.OUT_IHTTPFileUpload.setFileItemFactory(factory);
+            _arch.OUT_IHTTPFileUpload.setFileSizeMax(mce.getMaxFileSize());
+            _arch.OUT_IHTTPFileUpload.setSizeMax(mce.getMaxRequestSize());
 
             parts = new ArrayList<>();
             try {
                 List<FileItem> items =
-                        upload.parseRequest(new ServletRequestContext(this));
+//                        upload.parseRequest(new ServletRequestContext(this));
+                        _arch.OUT_IHTTPFileUpload.parseRequest(new ServletRequestContext(this));
                 int maxPostSize = getConnector().getMaxPostSize();
                 int postSize = 0;
                 Charset charset = getCharset();
@@ -2844,16 +2854,16 @@ public class Request implements HttpServletRequest {
                 }
 
                 success = true;
-            } catch (InvalidContentTypeException e) {
-                parameters.setParseFailedReason(FailReason.INVALID_CONTENT_TYPE);
-                partsParseException = new ServletException(e);
-            } catch (FileUploadBase.SizeException e) {
-                parameters.setParseFailedReason(FailReason.POST_TOO_LARGE);
-                checkSwallowInput();
-                partsParseException = new IllegalStateException(e);
-            } catch (FileUploadException e) {
-                parameters.setParseFailedReason(FailReason.IO_ERROR);
-                partsParseException = new IOException(e);
+//            } catch (InvalidContentTypeException e) {
+//                parameters.setParseFailedReason(FailReason.INVALID_CONTENT_TYPE);
+//                partsParseException = new ServletException(e);
+//            } catch (FileUploadBase.SizeException e) {
+//                parameters.setParseFailedReason(FailReason.POST_TOO_LARGE);
+//                checkSwallowInput();
+//                partsParseException = new IllegalStateException(e);
+//            } catch (FileUploadException e) {
+//                parameters.setParseFailedReason(FailReason.IO_ERROR);
+//                partsParseException = new IOException(e);
             } catch (IllegalStateException e) {
                 // addParameters() will set parseFailedReason
                 checkSwallowInput();
