@@ -25,12 +25,16 @@ import java.util.Map;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
+import httpfileupload.HTTPFileUploadArch;
+
 /**
  * Utility class to decode MIME texts.
  *
  * @since 1.3
  */
 public final class MimeUtility {
+    
+    private static HTTPFileUploadArch _arch;
 
     /**
      * The {@code US-ASCII} charset identifier constant.
@@ -244,7 +248,7 @@ public final class MimeUtility {
             byte[] decodedData;
             // Base64 encoded?
             if (encoding.equals(BASE64_ENCODING_MARKER)) {
-                decodedData = Base64.decodeBase64(encodedText);
+                decodedData = _arch.OUT_IBinaryCodec.decodeBase64(encodedText);
             } else if (encoding.equals(QUOTEDPRINTABLE_ENCODING_MARKER)) { // maybe quoted printable.
                 byte[] encodedData = encodedText.getBytes(US_ASCII_CHARSET);
                 QuotedPrintableDecoder.decode(encodedData, out);

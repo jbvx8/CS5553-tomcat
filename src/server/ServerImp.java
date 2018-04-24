@@ -1,6 +1,7 @@
 package server;
 
 import org.apache.catalina.startup.Bootstrap;
+import org.apache.tomcat.util.buf.HexUtils;
 
 public class ServerImp implements IServerImp
 {
@@ -33,6 +34,11 @@ public class ServerImp implements IServerImp
 	public void destroy(){
 		//TODO Auto-generated method stub
 	}
+
+    @Override
+    public String toHexString(byte[] bytes) {
+        return HexUtils.toHexString(bytes);
+    }
 
 	/*
   	  Implementation primitives required by the architecture

@@ -45,6 +45,8 @@ import org.ietf.jgss.GSSException;
 import org.ietf.jgss.GSSManager;
 import org.ietf.jgss.Oid;
 
+import server.ServerArch;
+
 /**
  * A SPNEGO authenticator that uses the SPNEGO/Kerberos support built in to Java
  * 6. Successful Kerberos authentication depends on the correct configuration of
@@ -56,6 +58,8 @@ public class SpnegoAuthenticator extends AuthenticatorBase {
 
     private static final Log log = LogFactory.getLog(SpnegoAuthenticator.class);
     private static final String AUTH_HEADER_VALUE_NEGOTIATE = "Negotiate";
+    
+    private ServerArch _arch;
 
     private String loginConfigName = Constants.DEFAULT_LOGIN_MODULE_NAME;
     public String getLoginConfigName() {
@@ -169,7 +173,7 @@ public class SpnegoAuthenticator extends AuthenticatorBase {
 
         authorizationBC.setOffset(authorizationBC.getOffset() + 10);
 
-        byte[] decoded = Base64.decodeBase64(authorizationBC.getBuffer(),
+        byte[] decoded = _arch.OUT_IBinaryCodec.decodeBase64(authorizationBC.getBuffer(),
                 authorizationBC.getOffset(),
                 authorizationBC.getLength());
 

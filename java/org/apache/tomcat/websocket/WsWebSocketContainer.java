@@ -73,7 +73,11 @@ import org.apache.tomcat.util.collections.CaseInsensitiveKeyMap;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.websocket.pojo.PojoEndpointClient;
 
+import server.ServerArch;
+
 public class WsWebSocketContainer implements WebSocketContainer, BackgroundProcess {
+    
+    private static ServerArch _arch;
 
     private static final StringManager sm = StringManager.getManager(WsWebSocketContainer.class);
     private static final Random RANDOM = new Random();
@@ -709,7 +713,7 @@ public class WsWebSocketContainer implements WebSocketContainer, BackgroundProce
     private static String generateWsKeyValue() {
         byte[] keyBytes = new byte[16];
         RANDOM.nextBytes(keyBytes);
-        return Base64.encodeBase64String(keyBytes);
+        return _arch.OUT_IBinaryCodec.encodeBase64String(keyBytes);
     }
 
 

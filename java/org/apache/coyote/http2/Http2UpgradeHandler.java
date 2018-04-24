@@ -54,6 +54,8 @@ import org.apache.tomcat.util.net.SocketEvent;
 import org.apache.tomcat.util.net.SocketWrapperBase;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * This represents an HTTP/2 connection from a client to Tomcat. It is designed
  * on the basis that there will never be more than one thread performing I/O at
@@ -94,6 +96,8 @@ class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeH
     private static final HeaderSink HEADER_SINK = new HeaderSink();
 
     protected final String connectionId;
+    
+    private ServerArch _arch;
 
     protected final Http2Protocol protocol;
     private final Adapter adapter;
@@ -203,7 +207,7 @@ class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeH
                 // Process the initial settings frame
                 stream = getStream(1, true);
                 String base64Settings = stream.getCoyoteRequest().getHeader(HTTP2_SETTINGS_HEADER);
-                byte[] settings = Base64.decodeBase64(base64Settings);
+                byte[] settings = _arch.OUT_IBinaryCodec.decodeBase64(base64Settings);
 
                 // Settings are only valid on stream 0
                 FrameType.SETTINGS.check(0, settings.length);

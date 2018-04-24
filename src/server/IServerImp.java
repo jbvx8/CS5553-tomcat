@@ -24,4 +24,7 @@ public interface IServerImp
 	/*
   	  Implementation primitives required by the architecture
 	*/
+  
+    
+    public String toHexString (byte[] bytes)  ;        
 }

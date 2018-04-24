@@ -29,6 +29,8 @@ import org.apache.tomcat.util.buf.HexUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.apache.tomcat.util.security.ConcurrentMessageDigest;
 
+import server.ServerArch;
+
 /**
  * This credential handler supports the following forms of stored passwords:
  * <ul>
@@ -58,6 +60,8 @@ public class MessageDigestCredentialHandler extends DigestCredentialHandlerBase 
 
     private Charset encoding = StandardCharsets.UTF_8;
     private String algorithm = null;
+    
+    private ServerArch _arch;
 
 
     public String getEncoding() {
@@ -111,7 +115,7 @@ public class MessageDigestCredentialHandler extends DigestCredentialHandlerBase 
                 // Server is storing digested passwords with a prefix indicating
                 // the digest type
                 String serverDigest = storedCredentials.substring(5);
-                String userDigest = Base64.encodeBase64String(ConcurrentMessageDigest.digest(
+                String userDigest = _arch.OUT_IBinaryCodec.encodeBase64String(ConcurrentMessageDigest.digest(
                         getAlgorithm(), inputCredentials.getBytes(StandardCharsets.ISO_8859_1)));
                 return userDigest.equals(serverDigest);
 
@@ -124,7 +128,7 @@ public class MessageDigestCredentialHandler extends DigestCredentialHandlerBase 
                 // Need to convert the salt to bytes to apply it to the user's
                 // digested password.
                 byte[] serverDigestPlusSaltBytes =
-                        Base64.decodeBase64(serverDigestPlusSalt);
+                        _arch.OUT_IBinaryCodec.decodeBase64(serverDigestPlusSalt);
                 final int saltPos = 20;
                 byte[] serverDigestBytes = new byte[saltPos];
                 System.arraycopy(serverDigestPlusSaltBytes, 0,

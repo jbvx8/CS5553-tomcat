@@ -34,6 +34,8 @@ import org.apache.tomcat.util.buf.ByteChunk;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.codec.binary.Base64;
 
+import server.ServerArch;
+
 
 
 /**
@@ -49,7 +51,7 @@ public class BasicAuthenticator extends AuthenticatorBase {
 
     private Charset charset = StandardCharsets.ISO_8859_1;
     private String charsetString = null;
-
+    
 
     public String getCharset() {
         return charsetString;
@@ -136,6 +138,8 @@ public class BasicAuthenticator extends AuthenticatorBase {
         // the only authentication method supported by this parser
         // note: we include single white space as its delimiter
         private static final String METHOD = "basic ";
+        
+        private ServerArch _arch;
 
         private final Charset charset;
         private final ByteChunk authorization;
@@ -210,7 +214,7 @@ public class BasicAuthenticator extends AuthenticatorBase {
          * break characters as well as surplus surrounding white space.
          */
         private byte[] parseBase64() throws IllegalArgumentException {
-            byte[] decoded = Base64.decodeBase64(
+            byte[] decoded = _arch.OUT_IBinaryCodec.decodeBase64(
                         authorization.getBuffer(),
                         base64blobOffset, base64blobLength);
             //  restore original offset

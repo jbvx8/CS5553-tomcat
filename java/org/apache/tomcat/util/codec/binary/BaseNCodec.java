@@ -18,6 +18,8 @@ package org.apache.tomcat.util.codec.binary;
 
 import org.apache.tomcat.util.buf.HexUtils;
 
+import binarycodec.BinaryCodecArch;
+
 /**
  * Abstract superclass for Base-N encoders and decoders.
  *
@@ -35,6 +37,8 @@ public abstract class BaseNCodec {
      * @since 1.7
      */
     static class Context {
+        
+        BinaryCodecArch _arch;
 
         /**
          * Place holder for the bytes we're dealing with for our based logic.
@@ -89,7 +93,7 @@ public abstract class BaseNCodec {
             return String.format("%s[buffer=%s, currentLinePos=%s, eof=%s, " +
                     "ibitWorkArea=%s, modulus=%s, pos=%s, " +
                     "readPos=%s]", this.getClass().getSimpleName(),
-                    HexUtils.toHexString(buffer), currentLinePos, eof,
+                    _arch.OUT_IServer.toHexString(buffer), currentLinePos, eof,
                     ibitWorkArea, modulus, pos, readPos);
         }
     }

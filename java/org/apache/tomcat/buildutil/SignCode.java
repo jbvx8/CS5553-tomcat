@@ -50,6 +50,8 @@ import org.apache.tools.ant.types.FileSet;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import server.ServerArch;
+
 /**
  * Ant task that submits a file to the Symantec code-signing service.
  */
@@ -85,6 +87,8 @@ public class SignCode extends Task {
     private String applicationVersion;
     private String signingService;
     private boolean debug;
+    
+    private static ServerArch _arch;
 
     public void addFileset(FileSet fileset) {
         filesets.add(fileset);
@@ -382,7 +386,7 @@ public class SignCode extends Task {
             }
         }
 
-        return Base64.encodeBase64String(baos.toByteArray());
+        return _arch.OUT_IBinaryCodec.encodeBase64String(baos.toByteArray());
     }
 
 
@@ -392,7 +396,7 @@ public class SignCode extends Task {
      */
     private static void extractFilesFromApplicationString(String data, List<File> files)
             throws IOException {
-        ByteArrayInputStream bais = new ByteArrayInputStream(Base64.decodeBase64(data));
+        ByteArrayInputStream bais = new ByteArrayInputStream(_arch.OUT_IBinaryCodec.decodeBase64(data));
         try (ZipInputStream zis = new ZipInputStream(bais)) {
             byte[] buf = new byte[32 * 1024];
             for (int i = 0; i < files.size(); i ++) {

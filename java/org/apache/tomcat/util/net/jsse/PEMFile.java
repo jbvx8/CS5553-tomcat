@@ -44,12 +44,16 @@ import javax.crypto.spec.PBEKeySpec;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * RFC 1421 PEM file containing X509 certificates or private keys (PKCS#8 only,
  * i.e. with boundaries containing "BEGIN PRIVATE KEY" or "BEGIN ENCRYPTED PRIVATE KEY",
  * not "BEGIN RSA PRIVATE KEY" or other variations).
  */
 class PEMFile {
+    
+    private ServerArch _arch;
 
     private static final StringManager sm = StringManager.getManager(PEMFile.class);
 
@@ -114,7 +118,7 @@ class PEMFile {
         public String content = "";
 
         private byte[] decode() {
-            return Base64.decodeBase64(content);
+            return _arch.OUT_IBinaryCodec.decodeBase64(content);
         }
 
         public X509Certificate toCertificate() throws CertificateException {

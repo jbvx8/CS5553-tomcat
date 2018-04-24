@@ -46,7 +46,11 @@ import org.apache.tomcat.websocket.Util;
 import org.apache.tomcat.websocket.WsHandshakeResponse;
 import org.apache.tomcat.websocket.pojo.PojoEndpointServer;
 
+import server.ServerArch;
+
 public class UpgradeUtil {
+    
+    private static ServerArch _arch;
 
     private static final StringManager sm =
             StringManager.getManager(UpgradeUtil.class.getPackage().getName());
@@ -334,6 +338,6 @@ public class UpgradeUtil {
     private static String getWebSocketAccept(String key) {
         byte[] digest = ConcurrentMessageDigest.digestSHA1(
                 key.getBytes(StandardCharsets.ISO_8859_1), WS_ACCEPT);
-        return Base64.encodeBase64String(digest);
+        return _arch.OUT_IBinaryCodec.encodeBase64String(digest);
     }
 }

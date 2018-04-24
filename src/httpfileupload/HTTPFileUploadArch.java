@@ -1,6 +1,8 @@
 package httpfileupload;
 
 
+import binarycodec.IBinaryCodec;
+
 import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
 import edu.uci.isr.myx.fw.MyxUtils;
@@ -19,7 +21,9 @@ import org.apache.tomcat.util.http.fileupload.RequestContext;
 public class HTTPFileUploadArch extends AbstractMyxSimpleBrick implements IHTTPFileUpload
 {
     public static final IMyxName msg_IHTTPFileUpload = MyxUtils.createName("httpfileupload.IHTTPFileUpload");
+    public static final IMyxName msg_IBinaryCodec = MyxUtils.createName("binarycodec.IBinaryCodec");
 
+    public IBinaryCodec OUT_IBinaryCodec;
 
 	private IHTTPFileUploadImp _imp;
 
@@ -46,6 +50,11 @@ public class HTTPFileUploadArch extends AbstractMyxSimpleBrick implements IHTTPF
     }
     
     public void begin(){
+        OUT_IBinaryCodec = (IBinaryCodec) MyxUtils.getFirstRequiredServiceObject(this,msg_IBinaryCodec);
+        if (OUT_IBinaryCodec == null){
+ 			System.err.println("Error: Interface binarycodec.IBinaryCodec returned null");
+			return;       
+        }
         _imp.begin();
     }
     
