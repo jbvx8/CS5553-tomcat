@@ -1129,7 +1129,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
      */
     @Override
     public String toString() {
-        return ToStringUtil.toString(this);
+        return _arch.OUT_IToStringUtil.toString(this);
     }
 
 

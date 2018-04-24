@@ -44,6 +44,8 @@ import org.apache.tomcat.util.ExceptionUtils;
 import org.apache.tomcat.util.modeler.Registry;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Classloader implementation which is specialized for handling web
  * applications in the most efficient way, while being Catalina aware (all
@@ -62,6 +64,8 @@ import org.apache.tomcat.util.res.StringManager;
  */
 public class WebappLoader extends LifecycleMBeanBase
     implements Loader, PropertyChangeListener {
+    
+    private ServerArch _arch;
 
 
     // ----------------------------------------------------------- Constructors
@@ -360,7 +364,7 @@ public class WebappLoader extends LifecycleMBeanBase
      */
     @Override
     public String toString() {
-        return ToStringUtil.toString(this, context);
+        return _arch.OUT_IToStringUtil.toString(this, context);
     }
 
 

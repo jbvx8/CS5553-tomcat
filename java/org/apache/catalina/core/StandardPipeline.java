@@ -39,6 +39,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.ExceptionUtils;
 
+import server.ServerArch;
+
 
 /**
  * Standard implementation of a processing <b>Pipeline</b> that will invoke
@@ -54,6 +56,8 @@ import org.apache.tomcat.util.ExceptionUtils;
  */
 
 public class StandardPipeline extends LifecycleBase implements Pipeline {
+    
+    private ServerArch _arch;
 
     private static final Log log = LogFactory.getLog(StandardPipeline.class);
 
@@ -223,7 +227,7 @@ public class StandardPipeline extends LifecycleBase implements Pipeline {
      */
     @Override
     public String toString() {
-        return ToStringUtil.toString(this);
+        return _arch.OUT_IToStringUtil.toString(this);
     }
 
 

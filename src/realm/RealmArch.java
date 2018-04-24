@@ -32,14 +32,18 @@ import security.ISecurity;
 
 import server.IServer;
 
+import tostring.IToStringUtil;
+
 public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
 {
     public static final IMyxName msg_IServer = MyxUtils.createName("server.IServer");
     public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
     public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
+    public static final IMyxName msg_IToStringUtil = MyxUtils.createName("tostring.IToStringUtil");
 
     public IServer OUT_IServer;
     public ISecurity OUT_ISecurity;
+    public IToStringUtil OUT_IToStringUtil;
 
 	private IRealmImp _imp;
 
@@ -74,6 +78,11 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
         OUT_ISecurity = (ISecurity) MyxUtils.getFirstRequiredServiceObject(this,msg_ISecurity);
         if (OUT_ISecurity == null){
  			System.err.println("Error: Interface security.ISecurity returned null");
+			return;       
+        }
+        OUT_IToStringUtil = (IToStringUtil) MyxUtils.getFirstRequiredServiceObject(this,msg_IToStringUtil);
+        if (OUT_IToStringUtil == null){
+ 			System.err.println("Error: Interface tostring.IToStringUtil returned null");
 			return;       
         }
         _imp.begin();

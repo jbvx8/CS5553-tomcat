@@ -59,6 +59,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * A <b>Cluster </b> implementation using simple multicast. Responsible for
  * setting up a cluster and provides callers with a valid multicast
@@ -71,6 +73,8 @@ import org.apache.tomcat.util.res.StringManager;
  */
 public class SimpleTcpCluster extends LifecycleMBeanBase
         implements CatalinaCluster, MembershipListener, ChannelListener{
+    
+    private ServerArch _arch;
 
     public static final Log log = LogFactory.getLog(SimpleTcpCluster.class);
 
@@ -655,7 +659,7 @@ public class SimpleTcpCluster extends LifecycleMBeanBase
      */
     @Override
     public String toString() {
-        return ToStringUtil.toString(this);
+        return _arch.OUT_IToStringUtil.toString(this);
     }
 
 

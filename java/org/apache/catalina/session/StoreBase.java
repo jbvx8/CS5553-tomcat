@@ -33,6 +33,8 @@ import org.apache.catalina.util.LifecycleBase;
 import org.apache.catalina.util.ToStringUtil;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Abstract implementation of the {@link Store} interface to
  * support most of the functionality required by a {@link Store}.
@@ -40,6 +42,8 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Bip Thelin
  */
 public abstract class StoreBase extends LifecycleBase implements Store {
+    
+    private ServerArch _arch;
 
     // ----------------------------------------------------- Instance Variables
 
@@ -278,6 +282,6 @@ public abstract class StoreBase extends LifecycleBase implements Store {
      */
     @Override
     public String toString() {
-        return ToStringUtil.toString(this, manager);
+        return _arch.OUT_IToStringUtil.toString(this, manager);
     }
 }

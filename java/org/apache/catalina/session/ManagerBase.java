@@ -51,6 +51,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 
 /**
  * Minimal implementation of the <b>Manager</b> interface that supports
@@ -60,6 +62,8 @@ import org.apache.tomcat.util.res.StringManager;
  * @author Craig R. McClanahan
  */
 public abstract class ManagerBase extends LifecycleMBeanBase implements Manager {
+    
+    private ServerArch _arch;
 
     private final Log log = LogFactory.getLog(ManagerBase.class); // must not be static
 
@@ -1197,7 +1201,7 @@ public abstract class ManagerBase extends LifecycleMBeanBase implements Manager 
 
     @Override
     public String toString() {
-        return ToStringUtil.toString(this, context);
+        return _arch.OUT_IToStringUtil.toString(this, context);
     }
 
 

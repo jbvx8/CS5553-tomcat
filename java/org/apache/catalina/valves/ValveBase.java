@@ -27,6 +27,8 @@ import org.apache.catalina.util.ToStringUtil;
 import org.apache.juli.logging.Log;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Convenience base class for implementations of the <b>Valve</b> interface.
  * A subclass <strong>MUST</strong> implement an <code>invoke()</code>
@@ -38,6 +40,8 @@ import org.apache.tomcat.util.res.StringManager;
  */
 public abstract class ValveBase extends LifecycleMBeanBase implements Contained, Valve {
 
+    private ServerArch _arch;
+    
     protected static final StringManager sm = StringManager.getManager(ValveBase.class);
 
 
@@ -184,7 +188,7 @@ public abstract class ValveBase extends LifecycleMBeanBase implements Contained,
      */
     @Override
     public String toString() {
-        return ToStringUtil.toString(this);
+        return _arch.OUT_IToStringUtil.toString(this);
     }
 
 
