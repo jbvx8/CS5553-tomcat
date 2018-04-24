@@ -24,10 +24,14 @@ import java.util.Map;
 
 import org.apache.tomcat.util.security.MD5Encoder;
 
+import server.ServerArch;
+
 /**
  * Authenticator supporting the DIGEST auth method.
  */
 public class DigestAuthenticator extends Authenticator {
+    
+    private ServerArch _arch;
 
     public static final String schemeName = "digest";
     private SecureRandom cnonceGenerator;
@@ -140,7 +144,7 @@ public class DigestAuthenticator extends Authenticator {
         MessageDigest md = MessageDigest.getInstance("MD5");
         byte[] thedigest = md.digest(bytesOfMessage);
 
-        return MD5Encoder.encode(thedigest);
+        return _arch.OUT_ISecurity.encode(thedigest);
     }
 
     @Override

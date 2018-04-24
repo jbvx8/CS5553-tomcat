@@ -60,6 +60,8 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import server.ServerArch;
+
 /**
  * Servlet which adds support for WebDAV level 2. All the basic HTTP requests
  * are handled by the DefaultServlet. The WebDAVServlet must not be used as the
@@ -122,6 +124,8 @@ import org.xml.sax.SAXException;
  * @author Remy Maucherat
  */
 public class WebdavServlet extends DefaultServlet {
+    
+    private static ServerArch _arch;
 
     private static final long serialVersionUID = 1L;
 
@@ -1118,7 +1122,7 @@ public class WebdavServlet extends DefaultServlet {
                 + lock.depth + "-" + lock.owner + "-" + lock.tokens + "-"
                 + lock.expiresAt + "-" + System.currentTimeMillis() + "-"
                 + secret;
-            String lockToken = MD5Encoder.encode(ConcurrentMessageDigest.digestMD5(
+            String lockToken = _arch.OUT_ISecurity.encode(_arch.OUT_ISecurity.digestMD5(
                     lockTokenStr.getBytes(StandardCharsets.ISO_8859_1)));
 
             if (resource.isDirectory() && lock.depth == maxDepth) {

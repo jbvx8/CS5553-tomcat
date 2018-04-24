@@ -431,7 +431,7 @@ public class RealmImp implements IRealmImp
 	            throw new IllegalArgumentException(uee.getMessage());
 	        }
 
-	        String serverDigest = _arch.OUT_IServer.encode(_arch.OUT_IServer.digestMD5(valueBytes));
+	        String serverDigest = _arch.OUT_ISecurity.encode(_arch.OUT_ISecurity.digestMD5(valueBytes));
 
 	        if (log.isDebugEnabled()) {
 	            log.debug("Digest : " + clientDigest + " Username:" + username
@@ -1181,7 +1181,7 @@ public class RealmImp implements IRealmImp
 	            throw new IllegalArgumentException(uee.getMessage());
 	        }
 
-	        return _arch.OUT_IServer.encode(_arch.OUT_IServer.digestMD5(valueBytes));
+	        return _arch.OUT_ISecurity.encode(_arch.OUT_ISecurity.digestMD5(valueBytes));
 	    }
 
 

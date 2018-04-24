@@ -17,16 +17,20 @@ import org.apache.catalina.Context;
 
 import realm.IRealm;
 
+import security.ISecurity;
+
 public class ServerArch extends AbstractMyxSimpleBrick implements IServer
 {
     public static final IMyxName msg_IHTTPFileUpload = MyxUtils.createName("httpfileupload.IHTTPFileUpload");
     public static final IMyxName msg_IBinaryCodec = MyxUtils.createName("binarycodec.IBinaryCodec");
     public static final IMyxName msg_IServer = MyxUtils.createName("server.IServer");
     public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
+    public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
     public IRealm OUT_IRealm;
+    public ISecurity OUT_ISecurity;
 
 	private IServerImp _imp;
 
@@ -66,6 +70,11 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
         OUT_IRealm = (IRealm) MyxUtils.getFirstRequiredServiceObject(this,msg_IRealm);
         if (OUT_IRealm == null){
  			System.err.println("Error: Interface realm.IRealm returned null");
+			return;       
+        }
+        OUT_ISecurity = (ISecurity) MyxUtils.getFirstRequiredServiceObject(this,msg_ISecurity);
+        if (OUT_ISecurity == null){
+ 			System.err.println("Error: Interface security.ISecurity returned null");
 			return;       
         }
         _imp.begin();

@@ -35,6 +35,8 @@ import org.apache.tomcat.util.http.parser.Authorization;
 import org.apache.tomcat.util.security.ConcurrentMessageDigest;
 import org.apache.tomcat.util.security.MD5Encoder;
 
+import server.ServerArch;
+
 
 /**
  * An <b>Authenticator</b> and <b>Valve</b> implementation of HTTP DIGEST
@@ -44,6 +46,8 @@ import org.apache.tomcat.util.security.MD5Encoder;
  * @author Remy Maucherat
  */
 public class DigestAuthenticator extends AuthenticatorBase {
+    
+    private static ServerArch _arch;
 
     private static final Log log = LogFactory.getLog(DigestAuthenticator.class);
 
@@ -305,9 +309,9 @@ public class DigestAuthenticator extends AuthenticatorBase {
         String ipTimeKey =
             request.getRemoteAddr() + ":" + currentTime + ":" + getKey();
 
-        byte[] buffer = ConcurrentMessageDigest.digestMD5(
+        byte[] buffer = _arch.OUT_ISecurity.digestMD5(
                 ipTimeKey.getBytes(StandardCharsets.ISO_8859_1));
-        String nonce = currentTime + ":" + MD5Encoder.encode(buffer);
+        String nonce = currentTime + ":" + _arch.OUT_ISecurity.encode(buffer);
 
         NonceInfo info = new NonceInfo(currentTime, getNonceCountWindowSize());
         synchronized (nonces) {
@@ -548,9 +552,9 @@ public class DigestAuthenticator extends AuthenticatorBase {
             }
             String serverIpTimeKey =
                 request.getRemoteAddr() + ":" + nonceTime + ":" + key;
-            byte[] buffer = ConcurrentMessageDigest.digestMD5(
+            byte[] buffer = _arch.OUT_ISecurity.digestMD5(
                     serverIpTimeKey.getBytes(StandardCharsets.ISO_8859_1));
-            String md5ServerIpTimeKey = MD5Encoder.encode(buffer);
+            String md5ServerIpTimeKey = _arch.OUT_ISecurity.encode(buffer);
             if (!md5ServerIpTimeKey.equals(md5clientIpTimeKey)) {
                 return false;
             }
@@ -607,9 +611,9 @@ public class DigestAuthenticator extends AuthenticatorBase {
             // MD5(Method + ":" + uri)
             String a2 = method + ":" + uri;
 
-            byte[] buffer = ConcurrentMessageDigest.digestMD5(
+            byte[] buffer = _arch.OUT_ISecurity.digestMD5(
                     a2.getBytes(StandardCharsets.ISO_8859_1));
-            String md5a2 = MD5Encoder.encode(buffer);
+            String md5a2 = _arch.OUT_ISecurity.encode(buffer);
 
             return realm.authenticate(userName, response, nonce, nc, cnonce,
                     qop, realmName, md5a2);
