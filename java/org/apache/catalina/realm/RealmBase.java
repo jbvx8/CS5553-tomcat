@@ -63,6 +63,8 @@ import org.ietf.jgss.GSSCredential;
 import org.ietf.jgss.GSSException;
 import org.ietf.jgss.GSSName;
 
+import realm.RealmArch;
+
 /**
  * Simple implementation of <b>Realm</b> that reads an XML file to configure
  * the valid users, passwords, and roles.  The file format (and default file
@@ -86,6 +88,8 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
     // ----------------------------------------------------- Instance Variables
+    
+    private static RealmArch _arch;
 
 
     /**
@@ -413,7 +417,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
             throw new IllegalArgumentException(uee.getMessage());
         }
 
-        String serverDigest = MD5Encoder.encode(ConcurrentMessageDigest.digestMD5(valueBytes));
+        String serverDigest = _arch.OUT_IServer.encode(_arch.OUT_IServer.digestMD5(valueBytes));
 
         if (log.isDebugEnabled()) {
             log.debug("Digest : " + clientDigest + " Username:" + username
@@ -1044,7 +1048,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
         if ((requestedSessionId != null) &&
             request.isRequestedSessionIdFromURL()) {
             file.append(";");
-            file.append(SessionConfig.getSessionUriParamName(
+            file.append(_arch.OUT_IServer.getSessionUriParamName(
                     request.getContext()));
             file.append("=");
             file.append(requestedSessionId);
@@ -1163,7 +1167,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
             throw new IllegalArgumentException(uee.getMessage());
         }
 
-        return MD5Encoder.encode(ConcurrentMessageDigest.digestMD5(valueBytes));
+        return _arch.OUT_IServer.encode(_arch.OUT_IServer.digestMD5(valueBytes));
     }
 
 
@@ -1181,7 +1185,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
         if (charset == null) {
             return StandardCharsets.ISO_8859_1;
         } else {
-            return B2CConverter.getCharset(charset);
+            return _arch.OUT_IServer.getCharset(charset);
         }
     }
 
@@ -1364,7 +1368,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
             for (Class<? extends DigestCredentialHandlerBase> clazz : credentialHandlerClasses) {
                 try {
                     handler = clazz.getConstructor().newInstance();
-                    if (IntrospectionUtils.setProperty(handler, "algorithm", algorithm)) {
+                    if (_arch.OUT_IServer.setProperty(handler, "algorithm", algorithm)) {
                         break;
                     }
                 } catch (ReflectiveOperationException e) {
@@ -1376,7 +1380,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
             try {
                 Class<?> clazz = Class.forName(handlerClassName);
                 handler = (DigestCredentialHandlerBase) clazz.getConstructor().newInstance();
-                IntrospectionUtils.setProperty(handler, "algorithm", algorithm);
+                _arch.OUT_IServer.setProperty(handler, "algorithm", algorithm);
             } catch (ReflectiveOperationException e) {
                 throw new RuntimeException(e);
             }
@@ -1386,15 +1390,15 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
             throw new RuntimeException(new NoSuchAlgorithmException(algorithm));
         }
 
-        IntrospectionUtils.setProperty(handler, "encoding", encoding);
+        _arch.OUT_IServer.setProperty(handler, "encoding", encoding);
         if (iterations > 0) {
-            IntrospectionUtils.setProperty(handler, "iterations", Integer.toString(iterations));
+            _arch.OUT_IServer.setProperty(handler, "iterations", Integer.toString(iterations));
         }
         if (saltLength > -1) {
-            IntrospectionUtils.setProperty(handler, "saltLength", Integer.toString(saltLength));
+            _arch.OUT_IServer.setProperty(handler, "saltLength", Integer.toString(saltLength));
         }
         if (keyLength > 0) {
-            IntrospectionUtils.setProperty(handler, "keyLength", Integer.toString(keyLength));
+            _arch.OUT_IServer.setProperty(handler, "keyLength", Integer.toString(keyLength));
         }
 
         for (; argIndex < args.length; argIndex++) {

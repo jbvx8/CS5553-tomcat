@@ -1,6 +1,12 @@
 package server;
 
 
+import java.io.UnsupportedEncodingException;
+
+import java.nio.charset.Charset;
+
+import org.apache.catalina.Context;
+
 import server.ServerArch;
 
 public interface IServerImp 
@@ -25,6 +31,11 @@ public interface IServerImp
   	  Implementation primitives required by the architecture
 	*/
   
-    
+    //To be imported: UnsupportedEncodingException,Charset,Context
+    public byte[] digestMD5 (byte[]... input)  ;        
+    public String encode (byte[] binaryData)  ;        
+    public Charset getCharset (String enc) throws UnsupportedEncodingException;        
+    public String getSessionUriParamName (Context context)  ;        
+    public boolean setProperty (Object o,String name,String value)  ;        
     public String toHexString (byte[] bytes)  ;        
 }

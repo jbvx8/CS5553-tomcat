@@ -9,14 +9,24 @@ import edu.uci.isr.myx.fw.MyxUtils;
 
 import httpfileupload.IHTTPFileUpload;
 
+import java.io.UnsupportedEncodingException;
+
+import java.nio.charset.Charset;
+
+import org.apache.catalina.Context;
+
+import realm.IRealm;
+
 public class ServerArch extends AbstractMyxSimpleBrick implements IServer
 {
     public static final IMyxName msg_IHTTPFileUpload = MyxUtils.createName("httpfileupload.IHTTPFileUpload");
     public static final IMyxName msg_IBinaryCodec = MyxUtils.createName("binarycodec.IBinaryCodec");
     public static final IMyxName msg_IServer = MyxUtils.createName("server.IServer");
+    public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
+    public IRealm OUT_IRealm;
 
 	private IServerImp _imp;
 
@@ -53,6 +63,11 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
  			System.err.println("Error: Interface binarycodec.IBinaryCodec returned null");
 			return;       
         }
+        OUT_IRealm = (IRealm) MyxUtils.getFirstRequiredServiceObject(this,msg_IRealm);
+        if (OUT_IRealm == null){
+ 			System.err.println("Error: Interface realm.IRealm returned null");
+			return;       
+        }
         _imp.begin();
     }
     
@@ -71,7 +86,22 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
 		return null;
 	}
   
-    
+    //To be imported: UnsupportedEncodingException,Charset,Context
+    public byte[] digestMD5 (byte[]... input)   {
+		return _imp.digestMD5(input);
+    }    
+    public String encode (byte[] binaryData)   {
+		return _imp.encode(binaryData);
+    }    
+    public Charset getCharset (String enc) throws UnsupportedEncodingException {
+		return _imp.getCharset(enc);
+    }    
+    public String getSessionUriParamName (Context context)   {
+		return _imp.getSessionUriParamName(context);
+    }    
+    public boolean setProperty (Object o,String name,String value)   {
+		return _imp.setProperty(o,name,value);
+    }    
     public String toHexString (byte[] bytes)   {
 		return _imp.toHexString(bytes);
     }    

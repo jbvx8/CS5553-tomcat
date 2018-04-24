@@ -185,7 +185,7 @@ public class GenericPrincipal implements TomcatPrincipal, Serializable {
     public GSSCredential getGssCredential() {
         return this.gssCredential;
     }
-    protected void setGssCredential(GSSCredential gssCredential) {
+    public void setGssCredential(GSSCredential gssCredential) {
         this.gssCredential = gssCredential;
     }
 
