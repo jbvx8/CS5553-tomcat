@@ -40,7 +40,7 @@ import server.ServerArch;
  */
 public abstract class ValveBase extends LifecycleMBeanBase implements Contained, Valve {
 
-    private ServerArch _arch;
+    private static ServerArch _arch;
     
     protected static final StringManager sm = StringManager.getManager(ValveBase.class);
 
@@ -84,6 +84,10 @@ public abstract class ValveBase extends LifecycleMBeanBase implements Contained,
 
 
     //-------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * Return the Container with which this Valve is associated, if any.

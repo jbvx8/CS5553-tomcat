@@ -89,6 +89,10 @@ public class SignCode extends Task {
     private boolean debug;
     
     private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     public void addFileset(FileSet fileset) {
         filesets.add(fileset);

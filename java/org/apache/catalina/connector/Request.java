@@ -129,7 +129,7 @@ public class Request implements HttpServletRequest {
 
     private static final Log log = LogFactory.getLog(Request.class);
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     /**
      * Create a new Request object associated with the given Connector.
@@ -146,6 +146,10 @@ public class Request implements HttpServletRequest {
         for(int i = 0; i < formats.length; i++) {
             formats[i] = (SimpleDateFormat) formatsTemplate[i].clone();
         }
+    }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
     }
 
 

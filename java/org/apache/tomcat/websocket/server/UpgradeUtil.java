@@ -61,6 +61,10 @@ public class UpgradeUtil {
     private UpgradeUtil() {
         // Utility class. Hide default constructor.
     }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * Checks to see if this is an HTTP request that includes a valid upgrade

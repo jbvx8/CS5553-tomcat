@@ -70,7 +70,6 @@ public class BasicAuthenticator extends AuthenticatorBase {
         this.charsetString = charsetString;
     }
 
-
     @Override
     protected boolean doAuthenticate(Request request, HttpServletResponse response)
             throws IOException {
@@ -139,7 +138,7 @@ public class BasicAuthenticator extends AuthenticatorBase {
         // note: we include single white space as its delimiter
         private static final String METHOD = "basic ";
         
-        private ServerArch _arch;
+        private static ServerArch _arch;
 
         private final Charset charset;
         private final ByteChunk authorization;
@@ -169,6 +168,17 @@ public class BasicAuthenticator extends AuthenticatorBase {
             parseMethod();
             byte[] decoded = parseBase64();
             parseCredentials(decoded);
+        }
+        
+        public BasicCredentials() {
+            // TODO Auto-generated constructor stub
+            initialOffset = 0;
+            charset = null;
+            authorization = null;
+        }
+
+        public static void setArch(ServerArch arch) {
+            _arch = arch;
         }
 
         /**

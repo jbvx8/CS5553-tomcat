@@ -51,15 +51,19 @@ import server.ServerArch;
  * i.e. with boundaries containing "BEGIN PRIVATE KEY" or "BEGIN ENCRYPTED PRIVATE KEY",
  * not "BEGIN RSA PRIVATE KEY" or other variations).
  */
-class PEMFile {
+public class PEMFile {
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     private static final StringManager sm = StringManager.getManager(PEMFile.class);
 
     private String filename;
     private List<X509Certificate> certificates = new ArrayList<>();
     private PrivateKey privateKey;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     public List<X509Certificate> getCertificates() {
         return certificates;

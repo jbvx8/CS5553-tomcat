@@ -59,9 +59,14 @@ public class SpnegoAuthenticator extends AuthenticatorBase {
     private static final Log log = LogFactory.getLog(SpnegoAuthenticator.class);
     private static final String AUTH_HEADER_VALUE_NEGOTIATE = "Negotiate";
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     private String loginConfigName = Constants.DEFAULT_LOGIN_MODULE_NAME;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
+    
     public String getLoginConfigName() {
         return loginConfigName;
     }

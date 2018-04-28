@@ -36,9 +36,9 @@ public abstract class BaseNCodec {
      *
      * @since 1.7
      */
-    static class Context {
+    public static class Context {
         
-        BinaryCodecArch _arch;
+        public static BinaryCodecArch _arch;
 
         /**
          * Place holder for the bytes we're dealing with for our based logic.
@@ -80,6 +80,10 @@ public abstract class BaseNCodec {
         int modulus;
 
         Context() {
+        }
+        
+        public static void setArch(BinaryCodecArch arch){
+            _arch = arch;
         }
 
         /**

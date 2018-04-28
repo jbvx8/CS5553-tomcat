@@ -1,6 +1,8 @@
 package binarycodec;
 
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.apache.tomcat.util.codec.binary.BaseNCodec;
+import org.apache.tomcat.util.codec.binary.BaseNCodec.Context;
 
 public class BinaryCodecImp implements IBinaryCodecImp
 {
@@ -21,7 +23,7 @@ public class BinaryCodecImp implements IBinaryCodecImp
   	  as the bricks are created, attached, detached, and destroyed respectively.
 	*/	
 	public void init(){
-	    //TODO Auto-generated method stub
+	    Context.setArch(_arch);
 	}
 	public void begin(){
 		//TODO Auto-generated method stub

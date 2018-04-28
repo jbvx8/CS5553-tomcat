@@ -46,11 +46,15 @@ public class ApplicationPart implements Part {
     private final FileItem fileItem;
     private final File location;
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     public ApplicationPart(FileItem fileItem, File location) {
         this.fileItem = fileItem;
         this.location = location;
+    }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
     }
 
     @Override

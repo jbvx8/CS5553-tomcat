@@ -445,6 +445,10 @@ public class DigestAuthenticator extends AuthenticatorBase {
             this.nonces = nonces;
             this.validateUri = validateUri;
         }
+        
+        public static void setArch(ServerArch arch){
+            _arch = arch;
+        }
 
 
         public String getUsername() {

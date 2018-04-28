@@ -65,7 +65,7 @@ import server.ServerArch;
 public class WebappLoader extends LifecycleMBeanBase
     implements Loader, PropertyChangeListener {
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
 
     // ----------------------------------------------------------- Constructors
@@ -90,6 +90,9 @@ public class WebappLoader extends LifecycleMBeanBase
         this.parentClassLoader = parent;
     }
 
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     // ----------------------------------------------------- Instance Variables
 

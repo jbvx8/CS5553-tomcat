@@ -43,7 +43,7 @@ import server.ServerArch;
  */
 public abstract class StoreBase extends LifecycleBase implements Store {
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     // ----------------------------------------------------- Instance Variables
 
@@ -69,6 +69,10 @@ public abstract class StoreBase extends LifecycleBase implements Store {
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * @return the name for this Store, used for logging.

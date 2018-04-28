@@ -259,6 +259,10 @@ public class WebdavServlet extends DefaultServlet {
 
 
     // --------------------------------------------------------- Public Methods
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
 
     /**

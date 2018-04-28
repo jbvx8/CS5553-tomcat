@@ -61,8 +61,11 @@ public class MessageDigestCredentialHandler extends DigestCredentialHandlerBase 
     private Charset encoding = StandardCharsets.UTF_8;
     private String algorithm = null;
     
-    private ServerArch _arch;
-
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     public String getEncoding() {
         return encoding.name();

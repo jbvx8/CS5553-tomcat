@@ -74,7 +74,7 @@ import server.ServerArch;
 public class SimpleTcpCluster extends LifecycleMBeanBase
         implements CatalinaCluster, MembershipListener, ChannelListener{
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     public static final Log log = LogFactory.getLog(SimpleTcpCluster.class);
 
@@ -161,6 +161,10 @@ public class SimpleTcpCluster extends LifecycleMBeanBase
     private final Map<Member,ObjectName> memberOnameMap = new ConcurrentHashMap<>();
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     public SimpleTcpCluster() {
         // NO-OP

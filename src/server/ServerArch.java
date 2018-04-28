@@ -41,7 +41,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public ServerArch (){
 		_imp = getImplementation();
 		if (_imp != null){
-			_imp.setArch(this);
+			_imp.setArch(this);		
 		} else {
 			System.exit(1);
 		}

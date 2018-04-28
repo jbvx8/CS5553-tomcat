@@ -63,7 +63,7 @@ import server.ServerArch;
  */
 public abstract class ManagerBase extends LifecycleMBeanBase implements Manager {
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     private final Log log = LogFactory.getLog(ManagerBase.class); // must not be static
 
@@ -212,6 +212,10 @@ public abstract class ManagerBase extends LifecycleMBeanBase implements Manager 
 
 
     // -------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * Obtain the regular expression used to filter session attribute based on

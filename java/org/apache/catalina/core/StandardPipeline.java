@@ -57,7 +57,7 @@ import server.ServerArch;
 
 public class StandardPipeline extends LifecycleBase implements Pipeline {
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     private static final Log log = LogFactory.getLog(StandardPipeline.class);
 
@@ -85,6 +85,10 @@ public class StandardPipeline extends LifecycleBase implements Pipeline {
         super();
         setContainer(container);
 
+    }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
     }
 
 

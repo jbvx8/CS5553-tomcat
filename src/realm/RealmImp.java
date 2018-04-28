@@ -75,7 +75,7 @@ public class RealmImp implements IRealmImp
   	  as the bricks are created, attached, detached, and destroyed respectively.
 	*/	
 	public void init(){
-	    //TODO Auto-generated method stub
+	    RealmBase.setArch(_arch);
 	}
 	public void begin(){
 		//TODO Auto-generated method stub

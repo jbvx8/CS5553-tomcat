@@ -16,6 +16,7 @@ import org.apache.tomcat.util.http.fileupload.ParameterParser;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.tomcat.util.http.fileupload.util.mime.MimeUtility;
 
 public class HTTPFileUploadImp implements IHTTPFileUploadImp
 {
@@ -44,7 +45,7 @@ public class HTTPFileUploadImp implements IHTTPFileUploadImp
   	  as the bricks are created, attached, detached, and destroyed respectively.
 	*/	
 	public void init(){
-	    //TODO Auto-generated method stub
+	    MimeUtility.setArch(_arch);
 	}
 	public void begin(){
 		//TODO Auto-generated method stub

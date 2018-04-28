@@ -31,12 +31,16 @@ import server.ServerArch;
  */
 public class DigestAuthenticator extends Authenticator {
     
-    private ServerArch _arch;
+    private static ServerArch _arch;
 
     public static final String schemeName = "digest";
     private SecureRandom cnonceGenerator;
     private int nonceCount = 0;
     private long cNonce;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     @Override
     public String getAuthorization(String requestUri, String WWWAuthenticate,

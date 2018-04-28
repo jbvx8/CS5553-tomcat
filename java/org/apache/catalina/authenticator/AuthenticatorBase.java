@@ -69,6 +69,8 @@ import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.apache.tomcat.util.http.FastHttpDateFormat;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Basic implementation of the <b>Valve</b> interface that enforces the
  * <code>&lt;security-constraint&gt;</code> elements in the web application

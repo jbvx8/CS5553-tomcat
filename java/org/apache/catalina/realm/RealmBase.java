@@ -63,6 +63,7 @@ import org.ietf.jgss.GSSCredential;
 import org.ietf.jgss.GSSException;
 import org.ietf.jgss.GSSName;
 
+import httpfileupload.HTTPFileUploadArch;
 import realm.RealmArch;
 
 /**
@@ -152,6 +153,10 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(RealmArch arch){
+        _arch = arch;
+    }
 
 
     /**

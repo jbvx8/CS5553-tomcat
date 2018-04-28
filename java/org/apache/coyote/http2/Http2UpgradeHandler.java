@@ -72,7 +72,7 @@ import server.ServerArch;
  *     </li>
  * </ul>
  */
-class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeHandler,
+public class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeHandler,
         Input, Output {
 
     protected static final Log log = LogFactory.getLog(Http2UpgradeHandler.class);
@@ -97,8 +97,6 @@ class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeH
 
     protected final String connectionId;
     
-    private ServerArch _arch;
-
     protected final Http2Protocol protocol;
     private final Adapter adapter;
     protected volatile SocketWrapperBase<?> socketWrapper;
@@ -140,6 +138,8 @@ class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeH
     // Stream concurrency control
     private AtomicInteger streamConcurrency = null;
     private Queue<StreamRunnable> queuedRunnable = null;
+    
+    private static ServerArch _arch;
 
 
     Http2UpgradeHandler(Http2Protocol protocol, Adapter adapter, Request coyoteRequest) {
@@ -168,6 +168,10 @@ class Http2UpgradeHandler extends AbstractStream implements InternalHttpUpgradeH
             activeRemoteStreamCount.set(1);
             maxProcessedStreamId = 1;
         }
+    }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
     }
 
 

@@ -105,6 +105,10 @@ public class WsWebSocketContainer implements WebSocketContainer, BackgroundProce
     private int processPeriod = Constants.DEFAULT_PROCESS_PERIOD;
 
     private InstanceManager instanceManager;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     InstanceManager getInstanceManager() {
         return instanceManager;

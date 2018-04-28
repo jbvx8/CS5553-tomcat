@@ -25,6 +25,7 @@ import java.util.Map;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
+import binarycodec.BinaryCodecArch;
 import httpfileupload.HTTPFileUploadArch;
 
 /**
@@ -89,6 +90,10 @@ public final class MimeUtility {
      */
     private MimeUtility() {
         // do nothing
+    }
+    
+    public static void setArch(HTTPFileUploadArch arch){
+        _arch = arch;
     }
 
     /**
