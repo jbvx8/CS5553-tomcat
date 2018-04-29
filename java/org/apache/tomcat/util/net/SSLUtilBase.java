@@ -30,6 +30,8 @@ import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.file.ConfigFileLoader;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Common base class for {@link SSLUtil} implementations.
  */
@@ -42,6 +44,8 @@ public abstract class SSLUtilBase implements SSLUtil {
 
     private final String[] enabledProtocols;
     private final String[] enabledCiphers;
+    
+    private static ServerArch _arch;
 
 
     protected SSLUtilBase(SSLHostConfigCertificate certificate) {
@@ -65,7 +69,10 @@ public abstract class SSLUtilBase implements SSLUtil {
                 getEnabled("ciphers", getLog(), false, configuredCiphers, implementedCiphers);
         this.enabledCiphers = enabledCiphers.toArray(new String[enabledCiphers.size()]);
     }
-
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     static <T> List<T> getEnabled(String name, Log log, boolean warnOnSkip, Collection<T> configured,
             Collection<T> implemented) {
@@ -129,7 +136,7 @@ public abstract class SSLUtilBase implements SSLUtil {
             if(!("PKCS11".equalsIgnoreCase(type) ||
                     "".equalsIgnoreCase(path)) ||
                     "NONE".equalsIgnoreCase(path)) {
-                istream = ConfigFileLoader.getInputStream(path);
+                istream = _arch.OUT_IFileUtil.getInputStream(path);
             }
 
             char[] storePass = null;

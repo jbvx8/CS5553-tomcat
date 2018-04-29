@@ -66,6 +66,8 @@ import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.apache.tomcat.util.net.SSLUtilBase;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * SSLUtil implementation for JSSE.
  *
@@ -82,6 +84,8 @@ public class JSSEUtil extends SSLUtilBase {
 
     private static final Set<String> implementedProtocols;
     private static final Set<String> implementedCiphers;
+    
+    private static ServerArch _arch;
 
     static {
         SSLContext context;
@@ -116,6 +120,8 @@ public class JSSEUtil extends SSLUtilBase {
         if (implementedProtocols.size() == 0) {
             log.warn(sm.getString("jsse.noDefaultProtocols"));
         }
+        
+        
 
         String[] implementedCipherSuiteArray = context.getSupportedSSLParameters().getCipherSuites();
         // The IBM JRE will accept cipher suites names SSL_xxx or TLS_xxx but
@@ -144,6 +150,11 @@ public class JSSEUtil extends SSLUtilBase {
         super(certificate);
         this.sslHostConfig = certificate.getSSLHostConfig();
     }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
+
 
 
     @Override
@@ -416,7 +427,7 @@ public class JSSEUtil extends SSLUtilBase {
         Collection<? extends CRL> crls = null;
         try {
             CertificateFactory cf = CertificateFactory.getInstance("X.509");
-            try (InputStream is = ConfigFileLoader.getInputStream(crlf)) {
+            try (InputStream is = _arch.OUT_IFileUtil.getInputStream(crlf)) {
                 crls = cf.generateCRLs(is);
             }
         } catch(IOException iex) {

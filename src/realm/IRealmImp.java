@@ -14,6 +14,7 @@ import java.sql.Wrapper;
 import javax.naming.Context;
 
 import org.apache.catalina.Contained;
+import org.apache.catalina.Container;
 import org.apache.catalina.CredentialHandler;
 
 import org.apache.catalina.connector.Request;
@@ -47,7 +48,7 @@ public interface IRealmImp
   	  Implementation primitives required by the architecture
 	*/
   
-    //To be imported: PropertyChangeListener,IOException,Principal,X509Certificate,Wrapper,Context,Contained,CredentialHandler,Request,Response,SecurityConstraint,GSSContext
+    //To be imported: PropertyChangeListener,IOException,Principal,X509Certificate,Wrapper,Context,Contained,Container,CredentialHandler,Request,Response,SecurityConstraint,GSSContext
     public CredentialHandler getCredentialHandler ()  ;        
     public void setCredentialHandler (CredentialHandler credentialHandler)  ;        
     public void addPropertyChangeListener (PropertyChangeListener listener)  ;        
@@ -64,4 +65,21 @@ public interface IRealmImp
     public void removePropertyChangeListener (PropertyChangeListener listener)  ;        
     public String[] getRoles (Principal principal)  ;        
     public boolean isAvailable ()  ;        
+    public int getTransportGuaranteeRedirectStatus ()  ;        
+    public void setTransportGuaranteeRedirectStatus (int transportGuaranteeRedirectStatus)  ;        
+    public Container getContainer ()  ;        
+    public void setContainer (Container container)  ;        
+    public String getAllRolesMode ()  ;        
+    public void setAllRolesMode (String allRolesMode)  ;        
+    public boolean getValidate ()  ;        
+    public void setValidate (boolean validate)  ;        
+    public String getX509UsernameRetrieverClassName ()  ;        
+    public void setX509UsernameRetrieverClassName (String className)  ;        
+    public boolean isStripRealmForGss ()  ;        
+    public void setStripRealmForGss (boolean stripRealmForGss)  ;        
+    public String toString ()  ;        
+    public String getObjectNameKeyProperties ()  ;        
+    public String getDomainInternal ()  ;        
+    public String getRealmPath ()  ;        
+    public void setRealmPath (String theRealmPath)  ;        
 }

@@ -631,7 +631,7 @@ public class TestRealmBase {
 
         // Check if user meets constraints
         boolean result = mapRealm.hasResourcePermission(
-                request, response, constraints, null);
+                request, response, constraints, (Context) null);
 
         Assert.assertEquals(Boolean.valueOf(expected), Boolean.valueOf(result));
     }
@@ -699,16 +699,16 @@ public class TestRealmBase {
 
         request.setUserPrincipal(null);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsGet, null));
+                request, response, constraintsGet, (Context) null));
         request.setUserPrincipal(gp1);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsGet, null));
+                request, response, constraintsGet, (Context) null));
         request.setUserPrincipal(gp2);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsGet, null));
+                request, response, constraintsGet, (Context) null));
         request.setUserPrincipal(gp99);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsGet, null));
+                request, response, constraintsGet, (Context) null));
 
         // Only user1 should be able to perform a POST as only that user has
         // role1.
@@ -719,16 +719,16 @@ public class TestRealmBase {
 
         request.setUserPrincipal(null);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsPost, null));
+                request, response, constraintsPost, (Context) null));
         request.setUserPrincipal(gp1);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsPost, null));
+                request, response, constraintsPost, (Context) null));
         request.setUserPrincipal(gp2);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsPost, null));
+                request, response, constraintsPost, (Context) null));
         request.setUserPrincipal(gp99);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsPost, null));
+                request, response, constraintsPost, (Context) null));
 
         // Only users with application roles (role1 or role2 so user1 or user2)
         // should be able to perform a PUT.
@@ -739,16 +739,16 @@ public class TestRealmBase {
 
         request.setUserPrincipal(null);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsPut, null));
+                request, response, constraintsPut, (Context) null));
         request.setUserPrincipal(gp1);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsPut, null));
+                request, response, constraintsPut, (Context) null));
         request.setUserPrincipal(gp2);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsPut, null));
+                request, response, constraintsPut, (Context) null));
         request.setUserPrincipal(gp99);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsPut, null));
+                request, response, constraintsPut, (Context) null));
 
         // Any authenticated user should be able to perform a TRACE.
         request.setMethod("TRACE");
@@ -758,16 +758,16 @@ public class TestRealmBase {
 
         request.setUserPrincipal(null);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsTrace, null));
+                request, response, constraintsTrace, (Context) null));
         request.setUserPrincipal(gp1);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsTrace, null));
+                request, response, constraintsTrace, (Context) null));
         request.setUserPrincipal(gp2);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsTrace, null));
+                request, response, constraintsTrace, (Context) null));
         request.setUserPrincipal(gp99);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsTrace, null));
+                request, response, constraintsTrace, (Context) null));
 
         // Only user1 should be able to perform a DELETE as only that user has
         // role1.
@@ -778,15 +778,15 @@ public class TestRealmBase {
 
         request.setUserPrincipal(null);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsDelete, null));
+                request, response, constraintsDelete, (Context) null));
         request.setUserPrincipal(gp1);
         Assert.assertTrue(mapRealm.hasResourcePermission(
-                request, response, constraintsDelete, null));
+                request, response, constraintsDelete, (Context) null));
         request.setUserPrincipal(gp2);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsDelete, null));
+                request, response, constraintsDelete, (Context) null));
         request.setUserPrincipal(gp99);
         Assert.assertFalse(mapRealm.hasResourcePermission(
-                request, response, constraintsDelete, null));
+                request, response, constraintsDelete, (Context) null));
     }
 }

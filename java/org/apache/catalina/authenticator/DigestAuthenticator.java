@@ -123,7 +123,7 @@ public class DigestAuthenticator extends AuthenticatorBase {
     protected boolean validateUri = true;
 
     // ------------------------------------------------------------- Properties
-
+    
     public int getNonceCountWindowSize() {
         return nonceCountWindowSize;
     }

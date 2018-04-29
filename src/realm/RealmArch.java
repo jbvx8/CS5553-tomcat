@@ -5,6 +5,8 @@ import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
 import edu.uci.isr.myx.fw.MyxUtils;
 
+import fileutil.IFileUtil;
+
 import java.beans.PropertyChangeListener;
 
 import java.io.IOException;
@@ -40,10 +42,12 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
     public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
     public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
     public static final IMyxName msg_IToStringUtil = MyxUtils.createName("tostring.IToStringUtil");
+    public static final IMyxName msg_IFileUtil = MyxUtils.createName("fileutil.IFileUtil");
 
     public IServer OUT_IServer;
     public ISecurity OUT_ISecurity;
     public IToStringUtil OUT_IToStringUtil;
+    public IFileUtil OUT_IFileUtil;
 
 	private IRealmImp _imp;
 
@@ -85,6 +89,11 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
  			System.err.println("Error: Interface tostring.IToStringUtil returned null");
 			return;       
         }
+        OUT_IFileUtil = (IFileUtil) MyxUtils.getFirstRequiredServiceObject(this,msg_IFileUtil);
+        if (OUT_IFileUtil == null){
+ 			System.err.println("Error: Interface fileutil.IFileUtil returned null");
+			return;       
+        }
         _imp.begin();
     }
     
@@ -103,7 +112,7 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
 		return null;
 	}
   
-    //To be imported: PropertyChangeListener,IOException,Principal,X509Certificate,Wrapper,Context,Contained,CredentialHandler,Request,Response,SecurityConstraint,GSSContext
+    //To be imported: PropertyChangeListener,IOException,Principal,X509Certificate,Wrapper,Context,Contained,Container,CredentialHandler,Request,Response,SecurityConstraint,GSSContext
     public CredentialHandler getCredentialHandler ()   {
 		return _imp.getCredentialHandler();
     }    
@@ -151,17 +160,56 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
     }    
     public boolean isAvailable ()   {
 		return _imp.isAvailable();
-    }
-
-    @Override
-    public Container getContainer() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void setContainer(Container container) {
-        // TODO Auto-generated method stub
-        
+    }    
+    public int getTransportGuaranteeRedirectStatus ()   {
+		return _imp.getTransportGuaranteeRedirectStatus();
+    }    
+    public void setTransportGuaranteeRedirectStatus (int transportGuaranteeRedirectStatus)   {
+		_imp.setTransportGuaranteeRedirectStatus(transportGuaranteeRedirectStatus);
+    }    
+    public Container getContainer ()   {
+		return _imp.getContainer();
+    }    
+    public void setContainer (Container container)   {
+		_imp.setContainer(container);
+    }    
+    public String getAllRolesMode ()   {
+		return _imp.getAllRolesMode();
+    }    
+    public void setAllRolesMode (String allRolesMode)   {
+		_imp.setAllRolesMode(allRolesMode);
+    }    
+    public boolean getValidate ()   {
+		return _imp.getValidate();
+    }    
+    public void setValidate (boolean validate)   {
+		_imp.setValidate(validate);
+    }    
+    public String getX509UsernameRetrieverClassName ()   {
+		return _imp.getX509UsernameRetrieverClassName();
+    }    
+    public void setX509UsernameRetrieverClassName (String className)   {
+		_imp.setX509UsernameRetrieverClassName(className);
+    }    
+    public boolean isStripRealmForGss ()   {
+		return _imp.isStripRealmForGss();
+    }    
+    public void setStripRealmForGss (boolean stripRealmForGss)   {
+		_imp.setStripRealmForGss(stripRealmForGss);
+    }    
+    public String toString ()   {
+		return _imp.toString();
+    }    
+    public String getObjectNameKeyProperties ()   {
+		return _imp.getObjectNameKeyProperties();
+    }    
+    public String getDomainInternal ()   {
+		return _imp.getDomainInternal();
+    }    
+    public String getRealmPath ()   {
+		return _imp.getRealmPath();
+    }    
+    public void setRealmPath (String theRealmPath)   {
+		_imp.setRealmPath(theRealmPath);
     }    
 }

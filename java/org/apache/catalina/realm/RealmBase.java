@@ -64,6 +64,7 @@ import org.ietf.jgss.GSSException;
 import org.ietf.jgss.GSSName;
 
 import httpfileupload.HTTPFileUploadArch;
+import realm.IRealm;
 import realm.RealmArch;
 
 /**
@@ -73,7 +74,7 @@ import realm.RealmArch;
  *
  * @author Craig R. McClanahan
  */
-public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
+public class RealmBase extends LifecycleMBeanBase implements Realm, IRealm {
 
     private static final Log log = LogFactory.getLog(RealmBase.class);
 
@@ -159,42 +160,59 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * @return The HTTP status code used when the container needs to issue an
-     *         HTTP redirect to meet the requirements of a configured transport
-     *         guarantee.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getTransportGuaranteeRedirectStatus()
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getTransportGuaranteeRedirectStatus()
+     */
+    @Override
     public int getTransportGuaranteeRedirectStatus() {
         return transportGuaranteeRedirectStatus;
     }
 
 
-    /**
-     * Set the HTTP status code used when the container needs to issue an HTTP
-     * redirect to meet the requirements of a configured transport guarantee.
-     *
-     * @param transportGuaranteeRedirectStatus The status to use. This value is
-     *                                         not validated
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setTransportGuaranteeRedirectStatus(int)
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setTransportGuaranteeRedirectStatus(int)
+     */
+    @Override
     public void setTransportGuaranteeRedirectStatus(int transportGuaranteeRedirectStatus) {
         this.transportGuaranteeRedirectStatus = transportGuaranteeRedirectStatus;
     }
 
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getCredentialHandler()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getCredentialHandler()
+     */
     @Override
     public CredentialHandler getCredentialHandler() {
         return credentialHandler;
     }
 
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setCredentialHandler(org.apache.catalina.CredentialHandler)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setCredentialHandler(org.apache.catalina.CredentialHandler)
+     */
     @Override
     public void setCredentialHandler(CredentialHandler credentialHandler) {
         this.credentialHandler = credentialHandler;
     }
 
 
-    /**
-     * Return the Container with which this Realm has been associated.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getContainer()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getContainer()
      */
     @Override
     public Container getContainer() {
@@ -202,10 +220,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Set the Container with which this Realm has been associated.
-     *
-     * @param container The associated Container
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setContainer(org.apache.catalina.Container)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setContainer(org.apache.catalina.Container)
      */
     @Override
     public void setContainer(Container container) {
@@ -216,72 +235,96 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
     }
 
-    /**
-     * Return the all roles mode.
-     * @return A string representation of the current all roles mode
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getAllRolesMode()
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getAllRolesMode()
+     */
+    @Override
     public String getAllRolesMode() {
         return allRolesMode.toString();
     }
 
 
-    /**
-     * Set the all roles mode.
-     * @param allRolesMode A string representation of the new all roles mode
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setAllRolesMode(java.lang.String)
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setAllRolesMode(java.lang.String)
+     */
+    @Override
     public void setAllRolesMode(String allRolesMode) {
         this.allRolesMode = AllRolesMode.toMode(allRolesMode);
     }
 
 
-    /**
-     * Return the "validate certificate chains" flag.
-     * @return The value of the validate certificate chains flag
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getValidate()
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getValidate()
+     */
+    @Override
     public boolean getValidate() {
         return validate;
     }
 
 
-    /**
-     * Set the "validate certificate chains" flag.
-     *
-     * @param validate The new validate certificate chains flag
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setValidate(boolean)
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setValidate(boolean)
+     */
+    @Override
     public void setValidate(boolean validate) {
 
         this.validate = validate;
 
     }
 
-    /**
-     * Gets the name of the class that will be used to extract user names
-     * from X509 client certificates.
-     * @return The name of the class that will be used to extract user names
-     *         from X509 client certificates.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getX509UsernameRetrieverClassName()
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getX509UsernameRetrieverClassName()
+     */
+    @Override
     public String getX509UsernameRetrieverClassName() {
         return x509UsernameRetrieverClassName;
     }
 
-    /**
-     * Sets the name of the class that will be used to extract user names
-     * from X509 client certificates. The class must implement
-     * X509UsernameRetriever.
-     *
-     * @param className The name of the class that will be used to extract user names
-     *                  from X509 client certificates.
-     * @see X509UsernameRetriever
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setX509UsernameRetrieverClassName(java.lang.String)
      */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setX509UsernameRetrieverClassName(java.lang.String)
+     */
+    @Override
     public void setX509UsernameRetrieverClassName(String className) {
         this.x509UsernameRetrieverClassName = className;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#isStripRealmForGss()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#isStripRealmForGss()
+     */
+    @Override
     public boolean isStripRealmForGss() {
         return stripRealmForGss;
     }
 
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setStripRealmForGss(boolean)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setStripRealmForGss(boolean)
+     */
+    @Override
     public void setStripRealmForGss(boolean stripRealmForGss) {
         this.stripRealmForGss = stripRealmForGss;
     }
@@ -290,10 +333,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     // --------------------------------------------------------- Public Methods
 
 
-    /**
-     * Add a property change listener to this component.
-     *
-     * @param listener The listener to add
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#addPropertyChangeListener(java.beans.PropertyChangeListener)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#addPropertyChangeListener(java.beans.PropertyChangeListener)
      */
     @Override
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -303,11 +347,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Return the Principal associated with the specified username, if there
-     * is one; otherwise return <code>null</code>.
-     *
-     * @param username Username of the Principal to look up
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#authenticate(java.lang.String)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#authenticate(java.lang.String)
      */
     @Override
     public Principal authenticate(String username) {
@@ -324,14 +368,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Return the Principal associated with the specified username and
-     * credentials, if there is one; otherwise return <code>null</code>.
-     *
-     * @param username Username of the Principal to look up
-     * @param credentials Password or other credentials to use in
-     *  authenticating this username
-     * @return the associated principal, or <code>null</code> if there is none.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#authenticate(java.lang.String, java.lang.String)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#authenticate(java.lang.String, java.lang.String)
      */
     @Override
     public Principal authenticate(String username, String credentials) {
@@ -377,23 +418,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
         }
     }
 
-    /**
-     * Try to authenticate with the specified username, which
-     * matches the digest calculated using the given parameters using the
-     * method described in RFC 2617 (which is a superset of RFC 2069).
-     *
-     * @param username Username of the Principal to look up
-     * @param clientDigest Digest which has been submitted by the client
-     * @param nonce Unique (or supposedly unique) token which has been used
-     * for this request
-     * @param nc the nonce counter
-     * @param cnonce the client chosen nonce
-     * @param qop the "quality of protection" (<code>nc</code> and <code>cnonce</code>
-     *        will only be used, if <code>qop</code> is not <code>null</code>).
-     * @param realm Realm name
-     * @param md5a2 Second MD5 digest used to calculate the digest :
-     * MD5(Method + ":" + uri)
-     * @return the associated principal, or <code>null</code> if there is none.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#authenticate(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#authenticate(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
      */
     @Override
     public Principal authenticate(String username, String clientDigest,
@@ -440,12 +469,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Return the Principal associated with the specified chain of X509
-     * client certificates.  If there is none, return <code>null</code>.
-     *
-     * @param certs Array of client certificates, with the first one in
-     *  the array being the certificate of the client itself.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#authenticate(java.security.cert.X509Certificate[])
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#authenticate(java.security.cert.X509Certificate[])
      */
     @Override
     public Principal authenticate(X509Certificate certs[]) {
@@ -476,8 +504,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * {@inheritDoc}
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#authenticate(org.ietf.jgss.GSSContext, boolean)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#authenticate(org.ietf.jgss.GSSContext, boolean)
      */
     @Override
     public Principal authenticate(GSSContext gssContext, boolean storeCreds) {
@@ -522,10 +553,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Execute a periodic task, such as reloading, etc. This method will be
-     * invoked inside the classloading context of this container. Unexpected
-     * throwables will be caught and logged.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#backgroundProcess()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#backgroundProcess()
      */
     @Override
     public void backgroundProcess() {
@@ -533,12 +565,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Return the SecurityConstraints configured to guard the request URI for
-     * this request, or <code>null</code> if there is no such constraint.
-     *
-     * @param request Request we are processing
-     * @param context Context the Request is mapped to
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#findSecurityConstraints(org.apache.catalina.connector.Request, org.apache.catalina.Context)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#findSecurityConstraints(org.apache.catalina.connector.Request, org.apache.catalina.Context)
      */
     @Override
     public SecurityConstraint [] findSecurityConstraints(Request request,
@@ -795,17 +826,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Perform access control based on the specified authorization constraint.
-     * Return <code>true</code> if this constraint is satisfied and processing
-     * should continue, or <code>false</code> otherwise.
-     *
-     * @param request Request we are processing
-     * @param response Response we are creating
-     * @param constraints Security constraint we are enforcing
-     * @param context The Context to which client of this class is attached.
-     *
-     * @exception IOException if an input/output error occurs
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#hasResourcePermission(org.apache.catalina.connector.Request, org.apache.catalina.connector.Response, org.apache.tomcat.util.descriptor.web.SecurityConstraint[], org.apache.catalina.Context)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#hasResourcePermission(org.apache.catalina.connector.Request, org.apache.catalina.connector.Response, org.apache.tomcat.util.descriptor.web.SecurityConstraint[], org.apache.catalina.Context)
      */
     @Override
     public boolean hasResourcePermission(Request request,
@@ -861,7 +886,7 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
                     log.debug("  No user authenticated, cannot grant access");
             } else {
                 for (int j = 0; j < roles.length; j++) {
-                    if (hasRole(null, principal, roles[j])) {
+                    if (hasRole((Wrapper) null, principal, roles[j])) {
                         status = true;
                         if( log.isDebugEnabled() )
                             log.debug( "Role found:  " + roles[j]);
@@ -915,13 +940,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * {@inheritDoc}
-     *
-     * This method or {@link #hasRoleInternal(Principal,
-     * String)} can be overridden by Realm implementations, but the default is
-     * adequate when an instance of <code>GenericPrincipal</code> is used to
-     * represent authenticated Principals from this Realm.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#hasRole(org.apache.catalina.Wrapper, java.security.Principal, java.lang.String)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#hasRole(org.apache.catalina.Wrapper, java.security.Principal, java.lang.String)
      */
     @Override
     public boolean hasRole(Wrapper wrapper, Principal principal, String role) {
@@ -979,17 +1002,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Enforce any user data constraint required by the security constraint
-     * guarding this request URI.  Return <code>true</code> if this constraint
-     * was not violated and processing should continue, or <code>false</code>
-     * if we have created a response already.
-     *
-     * @param request Request we are processing
-     * @param response Response we are creating
-     * @param constraints Security constraint being checked
-     *
-     * @exception IOException if an input/output error occurs
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#hasUserDataPermission(org.apache.catalina.connector.Request, org.apache.catalina.connector.Response, org.apache.tomcat.util.descriptor.web.SecurityConstraint[])
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#hasUserDataPermission(org.apache.catalina.connector.Request, org.apache.catalina.connector.Response, org.apache.tomcat.util.descriptor.web.SecurityConstraint[])
      */
     @Override
     public boolean hasUserDataPermission(Request request,
@@ -1071,10 +1088,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Remove a property change listener from this component.
-     *
-     * @param listener The listener to remove
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#removePropertyChangeListener(java.beans.PropertyChangeListener)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#removePropertyChangeListener(java.beans.PropertyChangeListener)
      */
     @Override
     public void removePropertyChangeListener(PropertyChangeListener listener) {
@@ -1129,8 +1147,11 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
-    /**
-     * Return a String representation of this component.
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#toString()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#toString()
      */
     @Override
     public String toString() {
@@ -1200,7 +1221,9 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
      * @param username The user name
      * @return the password associated with the given principal's user name.
      */
-    protected abstract String getPassword(String username);
+    protected String getPassword(String username) {
+        return null;
+    }
 
 
     /**
@@ -1223,7 +1246,9 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
      * @param username The user name
      * @return the Principal associated with the given user name.
      */
-    protected abstract Principal getPrincipal(String username);
+    protected Principal getPrincipal(String username) {
+        return getPrincipal(username, null);
+    }
 
 
     protected Principal getPrincipal(String username,
@@ -1423,6 +1448,12 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
     // -------------------- JMX and Registration  --------------------
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getObjectNameKeyProperties()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getObjectNameKeyProperties()
+     */
     @Override
     public String getObjectNameKeyProperties() {
 
@@ -1433,6 +1464,12 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
         return keyProperties.toString();
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getDomainInternal()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getDomainInternal()
+     */
     @Override
     public String getDomainInternal() {
         return container.getDomain();
@@ -1440,10 +1477,24 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
     protected String realmPath = "/realm0";
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getRealmPath()
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getRealmPath()
+     */
+    @Override
     public String getRealmPath() {
         return realmPath;
     }
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setRealmPath(java.lang.String)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#setRealmPath(java.lang.String)
+     */
+    @Override
     public void setRealmPath(String theRealmPath) {
         realmPath = theRealmPath;
     }
@@ -1526,6 +1577,12 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
     }
 
 
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getRoles(java.security.Principal)
+     */
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealmDef#getRoles(java.security.Principal)
+     */
     @Override
     public String[] getRoles(Principal principal) {
         if (principal instanceof GenericPrincipal) {
@@ -1534,5 +1591,34 @@ public abstract class RealmBase extends LifecycleMBeanBase implements Realm {
 
         String className = principal.getClass().getSimpleName();
         throw new IllegalStateException(sm.getString("realmBase.cannotGetRoles", className));
+    }
+
+
+    @Override
+    public boolean isAvailable() {
+        // TODO Auto-generated method stub
+        return Realm.super.isAvailable();
+    }
+
+
+    @Override
+    public SecurityConstraint[] findSecurityConstraints(Request request, javax.naming.Context context) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+    @Override
+    public boolean hasResourcePermission(Request request, Response response, SecurityConstraint[] constraint,
+            javax.naming.Context context) throws IOException {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+
+    @Override
+    public boolean hasRole(java.sql.Wrapper wrapper, Principal principal, String role) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }

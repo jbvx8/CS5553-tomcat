@@ -38,6 +38,9 @@ import org.apache.tomcat.util.file.ConfigFileLoader;
 import org.apache.tomcat.util.res.StringManager;
 import org.xml.sax.Attributes;
 
+import realm.RealmArch;
+import server.ServerArch;
+
 /**
  * <p>Concrete implementation of {@link UserDatabase} that loads all
  * defined users, groups, and roles into an in-memory data structure,
@@ -50,6 +53,8 @@ public class MemoryUserDatabase implements UserDatabase {
 
 
     private static final Log log = LogFactory.getLog(MemoryUserDatabase.class);
+    
+    private static ServerArch _arch;
 
     // ----------------------------------------------------------- Constructors
 
@@ -136,6 +141,10 @@ public class MemoryUserDatabase implements UserDatabase {
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
 
     /**
@@ -380,7 +389,7 @@ public class MemoryUserDatabase implements UserDatabase {
                 roles.clear();
 
                 String pathName = getPathname();
-                try (InputStream is = ConfigFileLoader.getInputStream(getPathname())) {
+                try (InputStream is = _arch.OUT_IFileUtil.getInputStream(getPathname())) {
                     // Construct a digester to read the XML input file
                     Digester digester = new Digester();
                     try {

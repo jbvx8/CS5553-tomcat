@@ -7,6 +7,8 @@ import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
 import edu.uci.isr.myx.fw.MyxUtils;
 
+import fileutil.IFileUtil;
+
 import httpfileupload.IHTTPFileUpload;
 
 import java.io.UnsupportedEncodingException;
@@ -29,19 +31,21 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
     public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
     public static final IMyxName msg_IToStringUtil = MyxUtils.createName("tostring.IToStringUtil");
+    public static final IMyxName msg_IFileUtil = MyxUtils.createName("fileutil.IFileUtil");
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
     public IRealm OUT_IRealm;
     public ISecurity OUT_ISecurity;
     public IToStringUtil OUT_IToStringUtil;
+    public IFileUtil OUT_IFileUtil;
 
 	private IServerImp _imp;
 
     public ServerArch (){
 		_imp = getImplementation();
 		if (_imp != null){
-			_imp.setArch(this);		
+			_imp.setArch(this);
 		} else {
 			System.exit(1);
 		}
@@ -84,6 +88,11 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
         OUT_IToStringUtil = (IToStringUtil) MyxUtils.getFirstRequiredServiceObject(this,msg_IToStringUtil);
         if (OUT_IToStringUtil == null){
  			System.err.println("Error: Interface tostring.IToStringUtil returned null");
+			return;       
+        }
+        OUT_IFileUtil = (IFileUtil) MyxUtils.getFirstRequiredServiceObject(this,msg_IFileUtil);
+        if (OUT_IFileUtil == null){
+ 			System.err.println("Error: Interface fileutil.IFileUtil returned null");
 			return;       
         }
         _imp.begin();

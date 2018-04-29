@@ -30,6 +30,8 @@ import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.digester.Digester;
 import org.apache.tomcat.util.file.ConfigFileLoader;
 
+import realm.RealmArch;
+
 
 /**
  * Simple implementation of <b>Realm</b> that reads an XML file to configure
@@ -67,9 +69,15 @@ public class MemoryRealm  extends RealmBase {
      * The set of valid Principals for this Realm, keyed by user name.
      */
     private final Map<String,GenericPrincipal> principals = new HashMap<>();
+    
+    private static RealmArch _arch;
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(RealmArch arch){
+        _arch = arch;
+    }
 
     /**
      * @return the pathname of our XML file containing user definitions.
@@ -239,7 +247,7 @@ public class MemoryRealm  extends RealmBase {
     @Override
     protected void startInternal() throws LifecycleException {
         String pathName = getPathname();
-        try (InputStream is = ConfigFileLoader.getInputStream(pathName)) {
+        try (InputStream is = _arch.OUT_IFileUtil.getInputStream(pathName)) {
             // Load the contents of the database file
             if (log.isDebugEnabled()) {
                 log.debug(sm.getString("memoryRealm.loadPath", pathName));

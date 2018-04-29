@@ -17,6 +17,7 @@ import org.apache.catalina.servlets.WebdavServlet;
 import org.apache.catalina.session.ManagerBase;
 import org.apache.catalina.session.StoreBase;
 import org.apache.catalina.startup.Bootstrap;
+import org.apache.catalina.users.MemoryUserDatabase;
 import org.apache.catalina.util.SessionConfig;
 import org.apache.catalina.valves.ValveBase;
 import org.apache.coyote.http2.Http2UpgradeHandler;
@@ -24,6 +25,8 @@ import org.apache.tomcat.buildutil.SignCode;
 import org.apache.tomcat.util.IntrospectionUtils;
 import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.buf.HexUtils;
+import org.apache.tomcat.util.net.SSLUtilBase;
+import org.apache.tomcat.util.net.jsse.JSSEUtil;
 import org.apache.tomcat.util.net.jsse.PEMFile;
 import org.apache.tomcat.util.security.ConcurrentMessageDigest;
 import org.apache.tomcat.util.security.MD5Encoder;
@@ -69,6 +72,9 @@ public class ServerImp implements IServerImp
         ManagerBase.setArch(_arch);
         StoreBase.setArch(_arch);
         ValveBase.setArch(_arch);
+        MemoryUserDatabase.setArch(_arch);
+        SSLUtilBase.setArch(_arch);
+        JSSEUtil.setArch(_arch);
 	}
 	public void begin(){
 		System.setProperty("catalina.home", "C:\\Users\\Jackie\\Documents\\CS5553\\workspace\\tomcat\\output\\build");
