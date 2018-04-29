@@ -46,6 +46,8 @@ import org.apache.tomcat.util.modeler.Registry;
 import org.apache.tomcat.util.modeler.Util;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 
 /**
  * Implementation of a <code>javax.servlet.FilterConfig</code> useful in
@@ -67,6 +69,8 @@ public final class ApplicationFilterConfig implements FilterConfig, Serializable
      * Empty String collection to serve as the basis for empty enumerations.
      */
     private static final List<String> emptyString = Collections.emptyList();
+    
+    private static ServerArch _arch;
 
     // ----------------------------------------------------------- Constructors
 
@@ -108,6 +112,11 @@ public final class ApplicationFilterConfig implements FilterConfig, Serializable
             initFilter();
         }
     }
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
+
 
 
     // ----------------------------------------------------- Instance Variables
@@ -265,10 +274,10 @@ public final class ApplicationFilterConfig implements FilterConfig, Serializable
         if (context instanceof StandardContext &&
                 context.getSwallowOutput()) {
             try {
-                SystemLogHandler.startCapture();
+                _arch.OUT_ILogUtility.startCapture();
                 filter.init(this);
             } finally {
-                String capturedlog = SystemLogHandler.stopCapture();
+                String capturedlog = _arch.OUT_ILogUtility.stopCapture();
                 if (capturedlog != null && capturedlog.length() > 0) {
                     getServletContext().log(capturedlog);
                 }

@@ -41,14 +41,18 @@ import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.log.SystemLogHandler;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Valve that implements the default basic behavior for the
  * <code>StandardWrapper</code> container implementation.
  *
  * @author Craig R. McClanahan
  */
-final class StandardWrapperValve
+public final class StandardWrapperValve
     extends ValveBase {
+    
+    private static ServerArch _arch;
 
     //------------------------------------------------------ Constructor
     public StandardWrapperValve() {
@@ -76,6 +80,10 @@ final class StandardWrapperValve
 
 
     // --------------------------------------------------------- Public Methods
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
 
     /**
@@ -178,7 +186,7 @@ final class StandardWrapperValve
                 // Swallow output if needed
                 if (context.getSwallowOutput()) {
                     try {
-                        SystemLogHandler.startCapture();
+                        _arch.OUT_ILogUtility.startCapture();
                         if (request.isAsyncDispatching()) {
                             request.getAsyncContextInternal().doInternalDispatch();
                         } else {
@@ -186,7 +194,7 @@ final class StandardWrapperValve
                                     response.getResponse());
                         }
                     } finally {
-                        String log = SystemLogHandler.stopCapture();
+                        String log = _arch.OUT_ILogUtility.stopCapture();
                         if (log != null && log.length() > 0) {
                             context.getLogger().info(log);
                         }

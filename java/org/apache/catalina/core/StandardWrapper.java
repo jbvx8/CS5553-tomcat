@@ -62,6 +62,8 @@ import org.apache.tomcat.util.log.SystemLogHandler;
 import org.apache.tomcat.util.modeler.Registry;
 import org.apache.tomcat.util.modeler.Util;
 
+import server.ServerArch;
+
 /**
  * Standard implementation of the <b>Wrapper</b> interface that represents
  * an individual servlet definition.  No child Containers are allowed, and
@@ -78,6 +80,8 @@ public class StandardWrapper extends ContainerBase
 
     protected static final String[] DEFAULT_SERVLET_METHODS = new String[] {
                                                     "GET", "HEAD", "POST" };
+    
+    private static ServerArch _arch;
 
     // ----------------------------------------------------------- Constructors
 
@@ -272,6 +276,10 @@ public class StandardWrapper extends ContainerBase
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     @Override
     public boolean isOverridable() {
@@ -1014,7 +1022,7 @@ public class StandardWrapper extends ContainerBase
 
         PrintStream out = System.out;
         if (swallowOutput) {
-            SystemLogHandler.startCapture();
+            _arch.OUT_ILogUtility.startCapture();
         }
 
         Servlet servlet;
@@ -1083,7 +1091,7 @@ public class StandardWrapper extends ContainerBase
             loadTime=System.currentTimeMillis() -t1;
         } finally {
             if (swallowOutput) {
-                String log = SystemLogHandler.stopCapture();
+                String log = _arch.OUT_ILogUtility.stopCapture();
                 if (log != null && log.length() > 0) {
                     if (getServletContext() != null) {
                         getServletContext().log(log);
@@ -1266,7 +1274,7 @@ public class StandardWrapper extends ContainerBase
         if (instanceInitialized) {
             PrintStream out = System.out;
             if (swallowOutput) {
-                SystemLogHandler.startCapture();
+                _arch.OUT_ILogUtility.startCapture();
             }
 
             // Call the servlet destroy() method
@@ -1304,7 +1312,7 @@ public class StandardWrapper extends ContainerBase
                 }
                 // Write captured output
                 if (swallowOutput) {
-                    String log = SystemLogHandler.stopCapture();
+                    String log = _arch.OUT_ILogUtility.stopCapture();
                     if (log != null && log.length() > 0) {
                         if (getServletContext() != null) {
                             getServletContext().log(log);

@@ -8,8 +8,11 @@ import org.apache.catalina.authenticator.SpnegoAuthenticator;
 import org.apache.catalina.authenticator.BasicAuthenticator.BasicCredentials;
 import org.apache.catalina.authenticator.DigestAuthenticator.DigestInfo;
 import org.apache.catalina.connector.Request;
+import org.apache.catalina.core.ApplicationFilterConfig;
 import org.apache.catalina.core.ApplicationPart;
 import org.apache.catalina.core.StandardPipeline;
+import org.apache.catalina.core.StandardWrapper;
+import org.apache.catalina.core.StandardWrapperValve;
 import org.apache.catalina.ha.tcp.SimpleTcpCluster;
 import org.apache.catalina.loader.WebappLoader;
 import org.apache.catalina.realm.MessageDigestCredentialHandler;
@@ -75,6 +78,9 @@ public class ServerImp implements IServerImp
         MemoryUserDatabase.setArch(_arch);
         SSLUtilBase.setArch(_arch);
         JSSEUtil.setArch(_arch);
+        ApplicationFilterConfig.setArch(_arch);
+        StandardWrapper.setArch(_arch);
+        StandardWrapperValve.setArch(_arch);
 	}
 	public void begin(){
 		System.setProperty("catalina.home", "C:\\Users\\Jackie\\Documents\\CS5553\\workspace\\tomcat\\output\\build");

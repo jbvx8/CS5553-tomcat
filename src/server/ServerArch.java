@@ -15,6 +15,8 @@ import java.io.UnsupportedEncodingException;
 
 import java.nio.charset.Charset;
 
+import logutil.ILogUtility;
+
 import org.apache.catalina.Context;
 
 import realm.IRealm;
@@ -32,6 +34,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
     public static final IMyxName msg_IToStringUtil = MyxUtils.createName("tostring.IToStringUtil");
     public static final IMyxName msg_IFileUtil = MyxUtils.createName("fileutil.IFileUtil");
+    public static final IMyxName msg_ILogUtility = MyxUtils.createName("logutil.ILogUtility");
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
@@ -39,6 +42,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public ISecurity OUT_ISecurity;
     public IToStringUtil OUT_IToStringUtil;
     public IFileUtil OUT_IFileUtil;
+    public ILogUtility OUT_ILogUtility;
 
 	private IServerImp _imp;
 
@@ -93,6 +97,11 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
         OUT_IFileUtil = (IFileUtil) MyxUtils.getFirstRequiredServiceObject(this,msg_IFileUtil);
         if (OUT_IFileUtil == null){
  			System.err.println("Error: Interface fileutil.IFileUtil returned null");
+			return;       
+        }
+        OUT_ILogUtility = (ILogUtility) MyxUtils.getFirstRequiredServiceObject(this,msg_ILogUtility);
+        if (OUT_ILogUtility == null){
+ 			System.err.println("Error: Interface logutil.ILogUtility returned null");
 			return;       
         }
         _imp.begin();
