@@ -19,17 +19,40 @@
 package org.apache.catalina.realm;
 
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.security.Principal;
+import java.security.cert.X509Certificate;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.catalina.Container;
+import org.apache.catalina.Context;
+import org.apache.catalina.CredentialHandler;
 import org.apache.catalina.LifecycleException;
+import org.apache.catalina.Realm;
+import org.apache.catalina.Wrapper;
+import org.apache.catalina.connector.Request;
+import org.apache.catalina.connector.Response;
+import org.apache.catalina.realm.RealmBase.AllRolesMode;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.ExceptionUtils;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.apache.tomcat.util.res.StringManager;
+import org.ietf.jgss.GSSContext;
+
+import jdbcrealm.JDBCRealmArch;
+import realm.RealmArch;
 
 
 /**
@@ -49,10 +72,95 @@ import org.apache.tomcat.util.ExceptionUtils;
 * @author Ignacio Ortega
 */
 public class JDBCRealm
-    extends RealmBase {
+    implements Realm {
 
 
     // ----------------------------------------------------- Instance Variables
+    
+    private static final Log log = LogFactory.getLog(RealmBase.class);
+
+    private static final List<Class<? extends DigestCredentialHandlerBase>> credentialHandlerClasses =
+            new ArrayList<>();
+
+    static {
+        // Order is important since it determines the search order for a
+        // matching handler if only an algorithm is specified when calling
+        // main()
+        credentialHandlerClasses.add(MessageDigestCredentialHandler.class);
+        credentialHandlerClasses.add(SecretKeyCredentialHandler.class);
+    }
+
+    // ----------------------------------------------------- Instance Variables
+    
+    private static JDBCRealmArch _arch;
+    
+    private RealmBase defaultRealm;
+
+    /**
+     * The Container with which this Realm is associated.
+     */
+    protected Container container = null;
+
+
+    /**
+     * Container log
+     */
+    protected Log containerLog = null;
+
+
+    private CredentialHandler credentialHandler;
+
+
+    /**
+     * The string manager for this package.
+     */
+    protected static final StringManager sm = StringManager.getManager(RealmBase.class);
+
+
+    /**
+     * The property change support for this component.
+     */
+    protected final PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+
+    /**
+     * Should we validate client certificate chains when they are presented?
+     */
+    protected boolean validate = true;
+
+    /**
+     * The name of the class to use for retrieving user names from X509
+     * certificates.
+     */
+    protected String x509UsernameRetrieverClassName;
+
+    /**
+     * The object that will extract user names from X509 client certificates.
+     */
+    protected X509UsernameRetriever x509UsernameRetriever;
+
+    /**
+     * The all role mode.
+     */
+    protected AllRolesMode allRolesMode = AllRolesMode.STRICT_MODE;
+
+
+    /**
+     * When processing users authenticated via the GSS-API, should any
+     * &quot;@...&quot; be stripped from the end of the user name?
+     */
+    protected boolean stripRealmForGss = true;
+
+
+    private int transportGuaranteeRedirectStatus = HttpServletResponse.SC_FOUND;
+
+
+    // ------------------------------------------------------------- Properties
+    
+    public static void setArch(JDBCRealmArch arch){
+        _arch = arch;
+    }
+
 
 
     /**
@@ -283,65 +391,7 @@ public class JDBCRealm
 
     // --------------------------------------------------------- Public Methods
 
-    /**
-     * Return the Principal associated with the specified username and
-     * credentials, if there is one; otherwise return <code>null</code>.
-     *
-     * If there are any errors with the JDBC connection, executing
-     * the query or anything we return null (don't authenticate). This
-     * event is also logged, and the connection will be closed so that
-     * a subsequent request will automatically re-open it.
-     *
-     *
-     * @param username Username of the Principal to look up
-     * @param credentials Password or other credentials to use in
-     *  authenticating this username
-     * @return the associated principal, or <code>null</code> if there is none.
-     */
-    @Override
-    public synchronized Principal authenticate(String username, String credentials) {
-
-        // Number of tries is the number of attempts to connect to the database
-        // during this login attempt (if we need to open the database)
-        // This needs rewritten with better pooling support, the existing code
-        // needs signature changes since the Prepared statements needs cached
-        // with the connections.
-        // The code below will try twice if there is a SQLException so the
-        // connection may try to be opened again. On normal conditions (including
-        // invalid login - the above is only used once.
-        int numberOfTries = 2;
-        while (numberOfTries>0) {
-            try {
-
-                // Ensure that we have an open database connection
-                open();
-
-                // Acquire a Principal object for this user
-                Principal principal = authenticate(dbConnection,
-                                                   username, credentials);
-
-
-                // Return the Principal (if any)
-                return principal;
-
-            } catch (SQLException e) {
-
-                // Log the problem for posterity
-                containerLog.error(sm.getString("jdbcRealm.exception"), e);
-
-                // Close the connection so that it gets reopened next time
-                if (dbConnection != null)
-                    close(dbConnection);
-
-            }
-
-            numberOfTries--;
-        }
-
-        // Worst case scenario
-        return null;
-
-    }
+    
 
 
     // -------------------------------------------------------- Package Methods
@@ -405,12 +455,6 @@ public class JDBCRealm
 
         // Create and return a suitable Principal for this user
         return new GenericPrincipal(username, credentials, roles);
-    }
-
-
-    @Override
-    public boolean isAvailable() {
-        return (dbConnection != null);
     }
 
 
@@ -499,7 +543,6 @@ public class JDBCRealm
      * @param username The user name
      * @return the password associated with the given principal's user name.
      */
-    @Override
     protected synchronized String getPassword(String username) {
 
         // Look up the user's credentials
@@ -554,7 +597,6 @@ public class JDBCRealm
      * @param username The user name
      * @return the Principal associated with the given user name.
      */
-    @Override
     protected synchronized Principal getPrincipal(String username) {
 
         return new GenericPrincipal(username,
@@ -709,7 +751,6 @@ public class JDBCRealm
      * @exception LifecycleException if this component detects a fatal error
      *  that prevents this component from being used
      */
-    @Override
     protected void startInternal() throws LifecycleException {
 
         // Validate that we can open our connection - but let tomcat
@@ -720,7 +761,7 @@ public class JDBCRealm
             containerLog.error(sm.getString("jdbcRealm.open"), e);
         }
 
-        super.startInternal();
+        defaultRealm.startInternal();
     }
 
 
@@ -732,15 +773,191 @@ public class JDBCRealm
      * @exception LifecycleException if this component detects a fatal error
      *  that needs to be reported
      */
-     @Override
-    protected void stopInternal() throws LifecycleException {
+     protected void stopInternal() throws LifecycleException {
 
-        super.stopInternal();
+        defaultRealm.stopInternal();
 
         // Close any open DB connection
         close(this.dbConnection);
 
     }
 
+     @Override
+     public CredentialHandler getCredentialHandler() {
+         return _arch.OUT_Realm.getCredentialHandler();
+     }
 
-}
+     @Override
+     public void setCredentialHandler(CredentialHandler credentialHandler) {
+         _arch.OUT_Realm.setCredentialHandler(credentialHandler);      
+     }
+
+     @Override
+     public void addPropertyChangeListener(PropertyChangeListener listener) {
+         _arch.OUT_Realm.addPropertyChangeListener(listener);
+     }
+
+     @Override
+     public Principal authenticate(String username) {
+        return _arch.OUT_Realm.authenticate(username);
+     }
+
+     @Override
+     public Principal authenticate(String username, String credentials) {
+        return _arch.OUT_Realm.authenticate(username, credentials);
+     }
+
+     @Override
+     public Principal authenticate(String username, String digest, String nonce, String nc, String cnonce, String qop,
+             String realm, String md5a2) {
+         return _arch.OUT_Realm.authenticate(username, digest, nonce, nc, cnonce, qop, realm, md5a2);
+     }
+
+     @Override
+     public Principal authenticate(GSSContext gssContext, boolean storeCreds) {
+         return _arch.OUT_Realm.authenticate(gssContext, storeCreds);
+     }
+
+     @Override
+     public Principal authenticate(X509Certificate[] certs) {
+         return _arch.OUT_Realm.authenticate(certs);
+     }
+
+     @Override
+     public void backgroundProcess() {
+         _arch.OUT_Realm.backgroundProcess();
+     }
+
+     public SecurityConstraint[] findSecurityConstraints(Request request, javax.naming.Context context) {
+         return _arch.OUT_Realm.findSecurityConstraints(request, (Context) context);
+     }
+
+     public boolean hasResourcePermission(Request request, Response response, SecurityConstraint[] constraint,
+             javax.naming.Context context) throws IOException {
+         return _arch.OUT_Realm.hasResourcePermission(request, response, constraint, (Context) context);
+     }
+
+     public boolean hasRole(java.sql.Wrapper wrapper, Principal principal, String role) {
+         return _arch.OUT_Realm.hasRole((Wrapper) wrapper, principal, role);
+     }
+
+     @Override
+     public boolean hasUserDataPermission(Request request, Response response, SecurityConstraint[] constraint)
+             throws IOException {
+         return _arch.OUT_Realm.hasUserDataPermission(request, response, constraint);
+     }
+
+     @Override
+     public void removePropertyChangeListener(PropertyChangeListener listener) {
+         _arch.OUT_Realm.removePropertyChangeListener(listener);
+         
+     }
+
+     @Override
+     public String[] getRoles(Principal principal) {
+         return _arch.OUT_Realm.getRoles(principal);
+     }
+
+     @Override
+     public boolean isAvailable() {
+         return _arch.OUT_Realm.isAvailable();
+     }
+
+     @Override
+     public int getTransportGuaranteeRedirectStatus() {
+         return _arch.OUT_Realm.getTransportGuaranteeRedirectStatus();
+     }
+
+     @Override
+     public void setTransportGuaranteeRedirectStatus(int transportGuaranteeRedirectStatus) {
+         _arch.OUT_Realm.setTransportGuaranteeRedirectStatus(transportGuaranteeRedirectStatus);
+     }
+
+     @Override
+     public Container getContainer() {
+         return _arch.OUT_Realm.getContainer();
+     }
+
+     @Override
+     public void setContainer(Container container) {
+         _arch.OUT_Realm.setContainer(container);
+     }
+
+     @Override
+     public String getAllRolesMode() {
+         return _arch.OUT_Realm.getAllRolesMode();
+     }
+
+     @Override
+     public void setAllRolesMode(String allRolesMode) {
+         _arch.OUT_Realm.setAllRolesMode(allRolesMode);
+     }
+
+     @Override
+     public boolean getValidate() {
+        return _arch.OUT_Realm.getValidate();
+     }
+
+     @Override
+     public void setValidate(boolean validate) {
+         _arch.OUT_Realm.setValidate(validate);
+     }
+
+     @Override
+     public String getX509UsernameRetrieverClassName() {
+         return _arch.OUT_Realm.getX509UsernameRetrieverClassName();
+     }
+
+     @Override
+     public void setX509UsernameRetrieverClassName(String className) {
+         _arch.OUT_Realm.setX509UsernameRetrieverClassName(className);
+     }
+
+     @Override
+     public boolean isStripRealmForGss() {
+         return _arch.OUT_Realm.isStripRealmForGss();
+     }
+
+     @Override
+     public void setStripRealmForGss(boolean stripRealmForGss) {
+         _arch.OUT_Realm.setStripRealmForGss(stripRealmForGss);
+     }
+
+     @Override
+     public String getObjectNameKeyProperties() {
+         return _arch.OUT_Realm.getObjectNameKeyProperties();
+     }
+
+     @Override
+     public String getDomainInternal() {
+         return _arch.OUT_Realm.getDomainInternal();
+     }
+
+     @Override
+     public String getRealmPath() {
+         return _arch.OUT_Realm.getRealmPath();
+     }
+
+     @Override
+     public void setRealmPath(String theRealmPath) {
+         _arch.OUT_Realm.setRealmPath(theRealmPath);
+     }
+
+     public boolean hasRole(Wrapper wrapper, Principal principal, String role) {
+         // TODO Auto-generated method stub
+         return false;
+     }
+
+    @Override
+    public SecurityConstraint[] findSecurityConstraints(Request request, Context context) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean hasResourcePermission(Request request, Response response, SecurityConstraint[] constraint,
+            Context context) throws IOException {
+        // TODO Auto-generated method stub
+        return false;
+    }
+ }

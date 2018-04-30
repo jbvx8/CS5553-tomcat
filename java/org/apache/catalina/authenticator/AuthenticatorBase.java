@@ -92,6 +92,8 @@ import server.ServerArch;
 public abstract class AuthenticatorBase extends ValveBase
         implements Authenticator, RegistrationListener {
 
+    private static ServerArch _arch;
+    
     private static final Log log = LogFactory.getLog(AuthenticatorBase.class);
 
     /**
@@ -233,6 +235,10 @@ public abstract class AuthenticatorBase extends ValveBase
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     public boolean getAlwaysUseSession() {
         return alwaysUseSession;
@@ -480,9 +486,9 @@ public abstract class AuthenticatorBase extends ValveBase
 
         boolean authRequired = isContinuationRequired(request);
 
-        Realm realm = this.context.getRealm();
+        _arch.OUT_Realm = this.context.getRealm();
         // Is this request URI subject to a security constraint?
-        SecurityConstraint[] constraints = realm.findSecurityConstraints(request, this.context);
+        SecurityConstraint[] constraints =  _arch.OUT_Realm.findSecurityConstraints(request, this.context);
 
         AuthConfigProvider jaspicProvider = getJaspicProvider();
         if (jaspicProvider != null) {
@@ -516,7 +522,7 @@ public abstract class AuthenticatorBase extends ValveBase
             if (log.isDebugEnabled()) {
                 log.debug(" Calling hasUserDataPermission()");
             }
-            if (!realm.hasUserDataPermission(request, response, constraints)) {
+            if (! _arch.OUT_Realm.hasUserDataPermission(request, response, constraints)) {
                 if (log.isDebugEnabled()) {
                     log.debug(" Failed hasUserDataPermission() test");
                 }
@@ -594,7 +600,7 @@ public abstract class AuthenticatorBase extends ValveBase
             if (log.isDebugEnabled()) {
                 log.debug(" Calling accessControl()");
             }
-            if (!realm.hasResourcePermission(request, response, constraints, this.context)) {
+            if (! _arch.OUT_Realm.hasResourcePermission(request, response, constraints, this.context)) {
                 if (log.isDebugEnabled()) {
                     log.debug(" Failed accessControl() test");
                 }
@@ -946,9 +952,9 @@ public abstract class AuthenticatorBase extends ValveBase
 
         Container parent = getContainer();
         if (parent != null) {
-            Realm realm = parent.getRealm();
-            if (realm != null) {
-                reauthenticated = sso.reauthenticate(ssoId, realm, request);
+            _arch.OUT_Realm = parent.getRealm();
+            if ( _arch.OUT_Realm != null) {
+                reauthenticated = sso.reauthenticate(ssoId,  _arch.OUT_Realm, request);
             }
         }
 

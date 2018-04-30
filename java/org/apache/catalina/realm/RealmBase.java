@@ -571,7 +571,6 @@ public class RealmBase extends LifecycleMBeanBase implements Realm, IRealm {
     /* (non-Javadoc)
      * @see org.apache.catalina.realm.IRealmDef#findSecurityConstraints(org.apache.catalina.connector.Request, org.apache.catalina.Context)
      */
-    @Override
     public SecurityConstraint [] findSecurityConstraints(Request request,
                                                          Context context) {
 
@@ -832,7 +831,6 @@ public class RealmBase extends LifecycleMBeanBase implements Realm, IRealm {
     /* (non-Javadoc)
      * @see org.apache.catalina.realm.IRealmDef#hasResourcePermission(org.apache.catalina.connector.Request, org.apache.catalina.connector.Response, org.apache.tomcat.util.descriptor.web.SecurityConstraint[], org.apache.catalina.Context)
      */
-    @Override
     public boolean hasResourcePermission(Request request,
                                          Response response,
                                          SecurityConstraint []constraints,
@@ -946,7 +944,6 @@ public class RealmBase extends LifecycleMBeanBase implements Realm, IRealm {
     /* (non-Javadoc)
      * @see org.apache.catalina.realm.IRealmDef#hasRole(org.apache.catalina.Wrapper, java.security.Principal, java.lang.String)
      */
-    @Override
     public boolean hasRole(Wrapper wrapper, Principal principal, String role) {
         // Check for a role alias defined in a <security-role-ref> element
         if (wrapper != null) {
