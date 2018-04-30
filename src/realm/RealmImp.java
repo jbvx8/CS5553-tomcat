@@ -136,18 +136,15 @@ public class RealmImp implements IRealmImp
         defaultRealm.backgroundProcess();
     }
 
-    @Override
     public SecurityConstraint[] findSecurityConstraints(Request request, javax.naming.Context context) {
         return defaultRealm.findSecurityConstraints(request, context);
     }
 
-    @Override
     public boolean hasResourcePermission(Request request, Response response, SecurityConstraint[] constraint,
             javax.naming.Context context) throws IOException {
         return defaultRealm.hasResourcePermission(request, response, constraint, context);
     }
 
-    @Override
     public boolean hasRole(java.sql.Wrapper wrapper, Principal principal, String role) {
         return defaultRealm.hasRole(wrapper, principal, role);
     }
@@ -252,6 +249,25 @@ public class RealmImp implements IRealmImp
     @Override
     public void setRealmPath(String theRealmPath) {
         defaultRealm.setRealmPath(theRealmPath);
+    }
+
+    @Override
+    public SecurityConstraint[] findSecurityConstraints(Request request, Context context) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean hasResourcePermission(Request request, Response response, SecurityConstraint[] constraint,
+            Context context) throws IOException {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean hasRole(Wrapper wrapper, Principal principal, String role) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }
 

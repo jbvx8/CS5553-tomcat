@@ -20,7 +20,13 @@ import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.security.Principal;
 import java.security.cert.X509Certificate;
+import java.sql.Wrapper;
 
+import javax.naming.Context;
+
+import org.apache.catalina.Contained;
+import org.apache.catalina.Container;
+import org.apache.catalina.CredentialHandler;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
@@ -144,7 +150,7 @@ public interface Realm extends Contained {
      *         if there is none
      */
     public SecurityConstraint [] findSecurityConstraints(Request request,
-                                                     Context context);
+                                                     org.apache.catalina.Context context);
 
 
     /**
@@ -162,7 +168,7 @@ public interface Realm extends Contained {
     public boolean hasResourcePermission(Request request,
                                          Response response,
                                          SecurityConstraint [] constraint,
-                                         Context context)
+                                         org.apache.catalina.Context context)
         throws IOException;
 
 
@@ -177,7 +183,7 @@ public interface Realm extends Contained {
      *         security role, within the context of this Realm; otherwise return
      *         <code>false</code>.
      */
-    public boolean hasRole(Wrapper wrapper, Principal principal, String role);
+    public boolean hasRole(org.apache.catalina.Wrapper wrapper, Principal principal, String role);
 
 
     /**
@@ -222,4 +228,90 @@ public interface Realm extends Contained {
     public default boolean isAvailable() {
         return true;
     }
+    
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getTransportGuaranteeRedirectStatus()
+     */
+    public int getTransportGuaranteeRedirectStatus();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setTransportGuaranteeRedirectStatus(int)
+     */
+    public void setTransportGuaranteeRedirectStatus(int transportGuaranteeRedirectStatus);
+
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getContainer()
+     */
+    public Container getContainer();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setContainer(org.apache.catalina.Container)
+     */
+    public void setContainer(Container container);
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getAllRolesMode()
+     */
+    public String getAllRolesMode();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setAllRolesMode(java.lang.String)
+     */
+    public void setAllRolesMode(String allRolesMode);
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getValidate()
+     */
+    public boolean getValidate();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setValidate(boolean)
+     */
+    public void setValidate(boolean validate);
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getX509UsernameRetrieverClassName()
+     */
+    public String getX509UsernameRetrieverClassName();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setX509UsernameRetrieverClassName(java.lang.String)
+     */
+    public void setX509UsernameRetrieverClassName(String className);
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#isStripRealmForGss()
+     */
+    public boolean isStripRealmForGss();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setStripRealmForGss(boolean)
+     */
+    public void setStripRealmForGss(boolean stripRealmForGss);
+
+    public String toString();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getObjectNameKeyProperties()
+     */
+    public String getObjectNameKeyProperties();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getDomainInternal()
+     */
+    public String getDomainInternal();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#getRealmPath()
+     */
+    public String getRealmPath();
+
+    /* (non-Javadoc)
+     * @see org.apache.catalina.realm.IRealm#setRealmPath(java.lang.String)
+     */
+    public void setRealmPath(String theRealmPath);
+
 }
+
+

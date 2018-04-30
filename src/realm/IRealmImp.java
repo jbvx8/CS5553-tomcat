@@ -58,9 +58,9 @@ public interface IRealmImp
     public Principal authenticate (GSSContext gssContext,boolean storeCreds)  ;        
     public Principal authenticate (X509Certificate certs[])  ;        
     public void backgroundProcess ()  ;        
-    public SecurityConstraint [] findSecurityConstraints (Request request,Context context)  ;        
-    public boolean hasResourcePermission (Request request,Response response,SecurityConstraint [] constraint,Context context) throws IOException;        
-    public boolean hasRole (Wrapper wrapper,Principal principal,String role)  ;        
+    public SecurityConstraint [] findSecurityConstraints (Request request,org.apache.catalina.Context context)  ;        
+    public boolean hasResourcePermission (Request request,Response response,SecurityConstraint [] constraint,org.apache.catalina.Context context) throws IOException;        
+    public boolean hasRole (org.apache.catalina.Wrapper wrapper,Principal principal,String role)  ;        
     public boolean hasUserDataPermission (Request request,Response response,SecurityConstraint []constraint) throws IOException;        
     public void removePropertyChangeListener (PropertyChangeListener listener)  ;        
     public String[] getRoles (Principal principal)  ;        

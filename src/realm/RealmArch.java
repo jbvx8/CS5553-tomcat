@@ -22,6 +22,7 @@ import javax.naming.Context;
 import org.apache.catalina.Contained;
 import org.apache.catalina.Container;
 import org.apache.catalina.CredentialHandler;
+import org.apache.catalina.Realm;
 
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.connector.Response;
@@ -36,10 +37,10 @@ import server.IServer;
 
 import tostring.IToStringUtil;
 
-public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
+public class RealmArch extends AbstractMyxSimpleBrick implements Realm
 {
     public static final IMyxName msg_IServer = MyxUtils.createName("server.IServer");
-    public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
+    public static final IMyxName msg_Realm = MyxUtils.createName("org.apache.catalina.Realm");
     public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
     public static final IMyxName msg_IToStringUtil = MyxUtils.createName("tostring.IToStringUtil");
     public static final IMyxName msg_IFileUtil = MyxUtils.createName("fileutil.IFileUtil");
@@ -106,7 +107,7 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
     }
     
 	public Object getServiceObject(IMyxName arg0) {
-		if (arg0.equals(msg_IRealm)){
+		if (arg0.equals(msg_Realm)){
 			return this;
 		}        
 		return null;
@@ -140,13 +141,13 @@ public class RealmArch extends AbstractMyxSimpleBrick implements IRealm
     public void backgroundProcess ()   {
 		_imp.backgroundProcess();
     }    
-    public SecurityConstraint [] findSecurityConstraints (Request request,Context context)   {
+    public SecurityConstraint [] findSecurityConstraints (Request request,org.apache.catalina.Context context)   {
 		return _imp.findSecurityConstraints(request,context);
     }    
-    public boolean hasResourcePermission (Request request,Response response,SecurityConstraint [] constraint,Context context) throws IOException {
+    public boolean hasResourcePermission (Request request,Response response,SecurityConstraint [] constraint,org.apache.catalina.Context context) throws IOException {
 		return _imp.hasResourcePermission(request,response,constraint,context);
     }    
-    public boolean hasRole (Wrapper wrapper,Principal principal,String role)   {
+    public boolean hasRole (org.apache.catalina.Wrapper wrapper,Principal principal,String role)   {
 		return _imp.hasRole(wrapper,principal,role);
     }    
     public boolean hasUserDataPermission (Request request,Response response,SecurityConstraint []constraint) throws IOException {

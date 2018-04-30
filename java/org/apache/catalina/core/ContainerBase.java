@@ -67,6 +67,8 @@ import org.apache.tomcat.util.ExceptionUtils;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.threads.InlineExecutorService;
 
+import server.ServerArch;
+
 
 /**
  * Abstract implementation of the <b>Container</b> interface, providing common
@@ -129,6 +131,8 @@ import org.apache.tomcat.util.threads.InlineExecutorService;
  */
 public abstract class ContainerBase extends LifecycleMBeanBase
         implements Container {
+    
+    private static ServerArch _arch;
 
     private static final Log log = LogFactory.getLog(ContainerBase.class);
 
@@ -281,6 +285,10 @@ public abstract class ContainerBase extends LifecycleMBeanBase
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     @Override
     public int getStartStopThreads() {

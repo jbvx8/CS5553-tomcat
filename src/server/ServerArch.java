@@ -18,8 +18,7 @@ import java.nio.charset.Charset;
 import logutil.ILogUtility;
 
 import org.apache.catalina.Context;
-
-import realm.IRealm;
+import org.apache.catalina.Realm;
 
 import security.ISecurity;
 
@@ -30,7 +29,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public static final IMyxName msg_IHTTPFileUpload = MyxUtils.createName("httpfileupload.IHTTPFileUpload");
     public static final IMyxName msg_IBinaryCodec = MyxUtils.createName("binarycodec.IBinaryCodec");
     public static final IMyxName msg_IServer = MyxUtils.createName("server.IServer");
-    public static final IMyxName msg_IRealm = MyxUtils.createName("realm.IRealm");
+    public static final IMyxName msg_Realm = MyxUtils.createName("org.apache.catalina.Realm");
     public static final IMyxName msg_ISecurity = MyxUtils.createName("security.ISecurity");
     public static final IMyxName msg_IToStringUtil = MyxUtils.createName("tostring.IToStringUtil");
     public static final IMyxName msg_IFileUtil = MyxUtils.createName("fileutil.IFileUtil");
@@ -38,7 +37,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
-    public IRealm OUT_IRealm;
+    public Realm OUT_Realm;
     public ISecurity OUT_ISecurity;
     public IToStringUtil OUT_IToStringUtil;
     public IFileUtil OUT_IFileUtil;
@@ -79,9 +78,9 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
  			System.err.println("Error: Interface binarycodec.IBinaryCodec returned null");
 			return;       
         }
-        OUT_IRealm = (IRealm) MyxUtils.getFirstRequiredServiceObject(this,msg_IRealm);
-        if (OUT_IRealm == null){
- 			System.err.println("Error: Interface realm.IRealm returned null");
+        OUT_Realm = (Realm) MyxUtils.getFirstRequiredServiceObject(this,msg_Realm);
+        if (OUT_Realm == null){
+ 			System.err.println("Error: Interface org.apache.catalina.Realm returned null");
 			return;       
         }
         OUT_ISecurity = (ISecurity) MyxUtils.getFirstRequiredServiceObject(this,msg_ISecurity);

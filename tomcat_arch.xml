@@ -110,7 +110,7 @@
             <types:description xsi:type="instance:Description">realm</types:description>
             <implementation:implementation xsi:type="javaimplementation:JavaImplementation">
                 <javaimplementation:mainClass xsi:type="javaimplementation:JavaClassFile">
-                    <javaimplementation:javaClassName xsi:type="javaimplementation:JavaClassName">realm.IRealm</javaimplementation:javaClassName>
+                    <javaimplementation:javaClassName xsi:type="javaimplementation:JavaClassName">org.apache.catalina.Realm</javaimplementation:javaClassName>
                 </javaimplementation:mainClass>
             </implementation:implementation>
         </types:interfaceType>

@@ -42,6 +42,8 @@ import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.descriptor.web.LoginConfig;
 import org.apache.tomcat.util.http.MimeHeaders;
 
+import server.ServerArch;
+
 /**
  * An <b>Authenticator</b> and <b>Valve</b> implementation of FORM BASED
  * Authentication, as described in the Servlet API Specification.
@@ -51,6 +53,8 @@ import org.apache.tomcat.util.http.MimeHeaders;
  */
 public class FormAuthenticator
     extends AuthenticatorBase {
+    
+    private static ServerArch _arch;
 
     private static final Log log = LogFactory.getLog(FormAuthenticator.class);
 
@@ -73,6 +77,10 @@ public class FormAuthenticator
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * Return the character encoding to use to read the user name and password.
@@ -252,7 +260,7 @@ public class FormAuthenticator
         // Yes -- Acknowledge the request, validate the specified credentials
         // and redirect to the error page if they are not correct
         request.getResponse().sendAcknowledgement();
-        Realm realm = context.getRealm();
+        _arch.OUT_Realm = context.getRealm();
         if (characterEncoding != null) {
             request.setCharacterEncoding(characterEncoding);
         }
@@ -261,7 +269,7 @@ public class FormAuthenticator
         if (log.isDebugEnabled()) {
             log.debug("Authenticating username '" + username + "'");
         }
-        principal = realm.authenticate(username, password);
+        principal = _arch.OUT_Realm.authenticate(username, password);
         if (principal == null) {
             forwardToErrorPage(request, response, config);
             return false;

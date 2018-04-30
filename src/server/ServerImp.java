@@ -4,12 +4,16 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 import org.apache.catalina.Context;
+import org.apache.catalina.authenticator.AuthenticatorBase;
+import org.apache.catalina.authenticator.FormAuthenticator;
 import org.apache.catalina.authenticator.SpnegoAuthenticator;
 import org.apache.catalina.authenticator.BasicAuthenticator.BasicCredentials;
 import org.apache.catalina.authenticator.DigestAuthenticator.DigestInfo;
 import org.apache.catalina.connector.Request;
 import org.apache.catalina.core.ApplicationFilterConfig;
 import org.apache.catalina.core.ApplicationPart;
+import org.apache.catalina.core.ContainerBase;
+import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.core.StandardPipeline;
 import org.apache.catalina.core.StandardWrapper;
 import org.apache.catalina.core.StandardWrapperValve;
@@ -81,6 +85,11 @@ public class ServerImp implements IServerImp
         ApplicationFilterConfig.setArch(_arch);
         StandardWrapper.setArch(_arch);
         StandardWrapperValve.setArch(_arch);
+        AuthenticatorBase.setArch(_arch);
+        FormAuthenticator.setArch(_arch);
+        Request.setArch(_arch);
+        StandardContext.setArch(_arch);
+        ContainerBase.setArch(_arch);
 	}
 	public void begin(){
 		System.setProperty("catalina.home", "C:\\Users\\Jackie\\Documents\\CS5553\\workspace\\tomcat\\output\\build");

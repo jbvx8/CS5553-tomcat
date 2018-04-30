@@ -134,6 +134,8 @@ import org.apache.tomcat.util.scan.StandardJarScanner;
 import org.apache.tomcat.util.security.PrivilegedGetTccl;
 import org.apache.tomcat.util.security.PrivilegedSetTccl;
 
+import server.ServerArch;
+
 /**
  * Standard implementation of the <b>Context</b> interface.  Each
  * child container must be a Wrapper implementation to process the
@@ -144,6 +146,8 @@ import org.apache.tomcat.util.security.PrivilegedSetTccl;
  */
 public class StandardContext extends ContainerBase
         implements Context, NotificationEmitter {
+    
+    private static ServerArch _arch;
 
     private static final Log log = LogFactory.getLog(StandardContext.class);
 
@@ -801,6 +805,10 @@ public class StandardContext extends ContainerBase
     private String responseEncoding = null;
 
     // ----------------------------------------------------- Context Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     @Override
     public String getRequestCharacterEncoding() {
@@ -4912,10 +4920,10 @@ public class StandardContext extends ContainerBase
                 logger = null;
                 getLogger();
 
-                Realm realm = getRealmInternal();
-                if(null != realm) {
-                    if (realm instanceof Lifecycle) {
-                        ((Lifecycle) realm).start();
+                _arch.OUT_Realm = getRealmInternal();
+                if(null != _arch.OUT_Realm) {
+                    if (_arch.OUT_Realm instanceof Lifecycle) {
+                        ((Lifecycle) _arch.OUT_Realm).start();
                     }
 
                     // Place the CredentialHandler into the ServletContext so
@@ -5289,9 +5297,9 @@ public class StandardContext extends ContainerBase
             if (context != null)
                 context.clearAttributes();
 
-            Realm realm = getRealmInternal();
-            if (realm instanceof Lifecycle) {
-                ((Lifecycle) realm).stop();
+            _arch.OUT_Realm = getRealmInternal();
+            if (_arch.OUT_Realm instanceof Lifecycle) {
+                ((Lifecycle) _arch.OUT_Realm).stop();
             }
             Loader loader = getLoader();
             if (loader instanceof Lifecycle) {

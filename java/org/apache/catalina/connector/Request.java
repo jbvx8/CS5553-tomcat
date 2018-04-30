@@ -2516,13 +2516,13 @@ public class Request implements HttpServletRequest {
             return userPrincipal != null;
         }
 
-        Realm realm = context.getRealm();
-        if (realm == null) {
+        _arch.OUT_Realm = context.getRealm();
+        if (_arch.OUT_Realm == null) {
             return false;
         }
 
         // Check for a role defined directly as a <security-role>
-        return realm.hasRole(getWrapper(), userPrincipal, role);
+        return _arch.OUT_Realm.hasRole(getWrapper(), userPrincipal, role);
     }
 
 
