@@ -28,6 +28,8 @@ import security.ISecurity;
 
 import tostring.IToStringUtil;
 
+import uriutil.IURIUtility;
+
 public class ServerArch extends AbstractMyxSimpleBrick implements IServer
 {
     public static final IMyxName msg_IHTTPFileUpload = MyxUtils.createName("httpfileupload.IHTTPFileUpload");
@@ -40,6 +42,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public static final IMyxName msg_ILogUtility = MyxUtils.createName("logutil.ILogUtility");
     public static final IMyxName msg_IRequestUtility = MyxUtils.createName("requestutil.IRequestUtility");
     public static final IMyxName msg_IDiagnostics = MyxUtils.createName("diagnostics.IDiagnostics");
+    public static final IMyxName msg_IURIUtility = MyxUtils.createName("uriutil.IURIUtility");
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
@@ -50,6 +53,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public ILogUtility OUT_ILogUtility;
     public IRequestUtility OUT_IRequestUtility;
     public IDiagnostics OUT_IDiagnostics;
+    public IURIUtility OUT_IURIUtility;
 
 	private IServerImp _imp;
 
@@ -119,6 +123,11 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
         OUT_IDiagnostics = (IDiagnostics) MyxUtils.getFirstRequiredServiceObject(this,msg_IDiagnostics);
         if (OUT_IDiagnostics == null){
  			System.err.println("Error: Interface diagnostics.IDiagnostics returned null");
+			return;       
+        }
+        OUT_IURIUtility = (IURIUtility) MyxUtils.getFirstRequiredServiceObject(this,msg_IURIUtility);
+        if (OUT_IURIUtility == null){
+ 			System.err.println("Error: Interface uriutil.IURIUtility returned null");
 			return;       
         }
         _imp.begin();

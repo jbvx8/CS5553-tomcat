@@ -65,6 +65,8 @@ import org.apache.tomcat.util.buf.UriUtil;
 import org.apache.tomcat.util.descriptor.web.LoginConfig;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 // TODO: lazy init for the temp dir - only when a JSP is compiled or
 // get temp dir is called we need to create it. This will avoid the
 // need for the baseDir
@@ -140,6 +142,12 @@ import org.apache.tomcat.util.res.StringManager;
 public class Tomcat {
 
     private static final StringManager sm = StringManager.getManager(Tomcat.class);
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     // Some logging implementations use weak references for loggers so there is
     // the possibility that logging configuration could be lost if GC runs just
@@ -1270,7 +1278,7 @@ public class Tomcat {
         try (JarFile jar = new JarFile(docBase)) {
             JarEntry entry = jar.getJarEntry(Constants.ApplicationContextXml);
             if (entry != null) {
-                result = UriUtil.buildJarUrl(docBase, Constants.ApplicationContextXml);
+                result = _arch.OUT_IURIUtility.buildJarUrl(docBase, Constants.ApplicationContextXml);
             }
         } catch (IOException e) {
             Logger.getLogger(getLoggerName(getHost(), contextName)).log(Level.WARNING,

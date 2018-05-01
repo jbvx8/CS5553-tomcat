@@ -48,6 +48,8 @@ import org.apache.tomcat.util.buf.UriUtil;
 import org.apache.tomcat.util.http.RequestUtil;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * <p>
  * Provides the resources implementation for a web application. The
@@ -808,10 +810,16 @@ public class StandardRoot extends LifecycleMBeanBase implements WebResourceRoot 
 
 
     // Unit tests need to access this class
-    static class BaseLocation {
+    public static class BaseLocation {
 
         private final String basePath;
         private final String archivePath;
+        
+        private static ServerArch _arch;
+        
+        public static void setArch(ServerArch arch){
+            _arch = arch;
+        }
 
         BaseLocation(URL url) {
             File f = null;
@@ -822,7 +830,7 @@ public class StandardRoot extends LifecycleMBeanBase implements WebResourceRoot 
                 if ("jar".equals(url.getProtocol())) {
                     endOfFileUrl = jarUrl.indexOf("!/");
                 } else {
-                    endOfFileUrl = jarUrl.indexOf(UriUtil.getWarSeparator());
+                    endOfFileUrl = jarUrl.indexOf(_arch.OUT_IURIUtility.getWarSeparator());
                 }
                 String fileUrl = jarUrl.substring(4, endOfFileUrl);
                 try {

@@ -72,6 +72,8 @@ import org.apache.tomcat.util.digester.Digester;
 import org.apache.tomcat.util.modeler.Registry;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * Startup event listener for a <b>Host</b> that configures the properties
  * of that Host, and the associated defined contexts.
@@ -82,6 +84,12 @@ import org.apache.tomcat.util.res.StringManager;
 public class HostConfig implements LifecycleListener {
 
     private static final Log log = LogFactory.getLog(HostConfig.class);
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * The string resources for this package.
@@ -880,7 +888,7 @@ public class HostConfig implements LifecycleListener {
                             context = new FailedContext();
                         }
                         context.setConfigFile(
-                                UriUtil.buildJarUrl(war, Constants.ApplicationContextXml));
+                                _arch.OUT_IURIUtility.buildJarUrl(war, Constants.ApplicationContextXml));
                     }
                 }
             } else if (!deployThisXML && xmlInWar) {

@@ -30,6 +30,8 @@ import org.apache.catalina.WebResourceRoot;
 import org.apache.tomcat.util.buf.UriUtil;
 import org.apache.tomcat.util.compat.JreCompat;
 
+import server.ServerArch;
+
 /**
  * Base class for a {@link org.apache.catalina.WebResourceSet} based on a
  * single, rather than nested, archive.
@@ -37,6 +39,12 @@ import org.apache.tomcat.util.compat.JreCompat;
 public abstract class AbstractSingleArchiveResourceSet extends AbstractArchiveResourceSet {
 
     private volatile Boolean multiRelease;
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * A no argument constructor is required for this to work with the digester.
@@ -144,7 +152,7 @@ public abstract class AbstractSingleArchiveResourceSet extends AbstractArchiveRe
         }
 
         try {
-            setBaseUrl(UriUtil.buildJarSafeUrl(new File(getBase())));
+            setBaseUrl(_arch.OUT_IURIUtility.buildJarSafeUrl(new File(getBase())));
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(e);
         }

@@ -45,6 +45,8 @@ import org.apache.tomcat.util.buf.UriUtil;
 import org.apache.tomcat.util.compat.JreCompat;
 import org.apache.tomcat.util.res.StringManager;
 
+import server.ServerArch;
+
 /**
  * The default {@link JarScanner} implementation scans the WEB-INF/lib directory
  * followed by the provided classloader and then works up the classloader
@@ -62,6 +64,12 @@ import org.apache.tomcat.util.res.StringManager;
 public class StandardJarScanner implements JarScanner {
 
     private static final Log log = LogFactory.getLog(StandardJarScanner.class);
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * The string resources for this package.
@@ -383,7 +391,7 @@ public class StandardJarScanner implements JarScanner {
                 f = new File(url.toURI());
                 if (f.isFile() && isScanAllFiles()) {
                     // Treat this file as a JAR
-                    URL jarURL = UriUtil.buildJarUrl(f);
+                    URL jarURL = _arch.OUT_IURIUtility.buildJarUrl(f);
                     try (Jar jar = JarFactory.newInstance(jarURL)) {
                         if (isScanManifest()) {
                             processManifest(jar, isWebapp, classPathUrlsToProcess);

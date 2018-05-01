@@ -54,7 +54,15 @@ import org.apache.tomcat.util.buf.UDecoder;
 import org.apache.tomcat.util.buf.UriUtil;
 import org.apache.tomcat.util.http.RequestUtil;
 
+import server.ServerArch;
+
 public class RewriteValve extends ValveBase {
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * The rewrite rules that the valve will use.
@@ -394,7 +402,7 @@ public class RewriteValve extends ValveBase {
                     // 2. the url starts with a leading slash
                     // 3. the url isn't absolute
                     if (context && urlStringEncoded.charAt(0) == '/' &&
-                            !UriUtil.hasScheme(urlStringEncoded)) {
+                            !_arch.OUT_IURIUtility.hasScheme(urlStringEncoded)) {
                         urlStringEncoded.insert(0, request.getContext().getEncodedPath());
                     }
                     if (rule.isNoescape()) {

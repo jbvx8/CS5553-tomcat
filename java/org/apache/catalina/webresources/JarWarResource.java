@@ -26,6 +26,8 @@ import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.apache.tomcat.util.buf.UriUtil;
 
+import server.ServerArch;
+
 /**
  * Represents a single resource (file or directory) that is located within a
  * JAR that in turn is located in a WAR file.
@@ -33,6 +35,12 @@ import org.apache.tomcat.util.buf.UriUtil;
 public class JarWarResource extends AbstractArchiveResource {
 
     private static final Log log = LogFactory.getLog(JarWarResource.class);
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     private final String archivePath;
 
@@ -40,8 +48,8 @@ public class JarWarResource extends AbstractArchiveResource {
             String baseUrl, JarEntry jarEntry, String archivePath) {
 
         super(archiveResourceSet, webAppPath,
-                "jar:war:" + baseUrl + UriUtil.getWarSeparator() + archivePath + "!/",
-                jarEntry, "war:" + baseUrl + UriUtil.getWarSeparator() + archivePath);
+                "jar:war:" + baseUrl + _arch.OUT_IURIUtility.getWarSeparator() + archivePath + "!/",
+                jarEntry, "war:" + baseUrl + _arch.OUT_IURIUtility.getWarSeparator() + archivePath);
         this.archivePath = archivePath;
     }
 

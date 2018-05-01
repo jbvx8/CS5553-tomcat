@@ -24,15 +24,23 @@ import java.security.Permission;
 
 import org.apache.tomcat.util.buf.UriUtil;
 
+import server.ServerArch;
+
 
 public class WarURLConnection extends URLConnection {
 
     private final URLConnection wrappedJarUrlConnection;
     private boolean connected;
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     protected WarURLConnection(URL url) throws IOException {
         super(url);
-        URL innerJarUrl = UriUtil.warToJar(url);
+        URL innerJarUrl = _arch.OUT_IURIUtility.warToJar(url);
         wrappedJarUrlConnection = innerJarUrl.openConnection();
     }
 

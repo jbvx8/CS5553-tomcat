@@ -109,6 +109,8 @@ import org.apache.tomcat.util.scan.JarFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXParseException;
 
+import server.ServerArch;
+
 /**
  * Startup event listener for a <b>Context</b> that configures the properties
  * of that Context, and the associated defined servlets.
@@ -118,6 +120,12 @@ import org.xml.sax.SAXParseException;
 public class ContextConfig implements LifecycleListener {
 
     private static final Log log = LogFactory.getLog(ContextConfig.class);
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
 
     /**
@@ -600,7 +608,7 @@ public class ContextConfig implements LifecycleListener {
         boolean docBaseInAppBase = docBase.startsWith(appBase.getPath() + File.separatorChar);
 
         if (docBase.toLowerCase(Locale.ENGLISH).endsWith(".war") && !file.isDirectory()) {
-            URL war = UriUtil.buildJarUrl(new File(docBase));
+            URL war = _arch.OUT_IURIUtility.buildJarUrl(new File(docBase));
             if (unpackWARs) {
                 docBase = ExpandWar.expand(host, war, pathName);
                 file = new File(docBase);
@@ -616,7 +624,7 @@ public class ContextConfig implements LifecycleListener {
             File warFile = new File(docBase + ".war");
             URL war = null;
             if (warFile.exists() && docBaseInAppBase) {
-                war = UriUtil.buildJarUrl(warFile);
+                war = _arch.OUT_IURIUtility.buildJarUrl(warFile);
             }
             if (docDir.exists()) {
                 if (war != null && unpackWARs) {

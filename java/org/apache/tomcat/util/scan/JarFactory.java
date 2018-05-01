@@ -24,10 +24,18 @@ import java.util.regex.Matcher;
 import org.apache.tomcat.Jar;
 import org.apache.tomcat.util.buf.UriUtil;
 
+import server.ServerArch;
+
 /**
  * Provide a mechanism to obtain objects that implement {@link Jar}.
  */
 public class JarFactory {
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     private JarFactory() {
         // Factory class. Hide public constructor.
@@ -43,7 +51,7 @@ public class JarFactory {
                 return new JarFileUrlNestedJar(url);
             }
         } else if (urlString.startsWith("war:file:")) {
-            URL jarUrl = UriUtil.warToJar(url);
+            URL jarUrl = _arch.OUT_IURIUtility.warToJar(url);
             return new JarFileUrlNestedJar(jarUrl);
         } else if (urlString.startsWith("file:")) {
             return new JarFileUrlJar(url, false);
@@ -63,7 +71,7 @@ public class JarFactory {
             // support jar:jar:file:... so switch to Tomcat's war:file:...
             baseExternal = baseExternal.replaceFirst("^jar:", "war:");
             baseExternal = baseExternal.replaceFirst("!/",
-                    Matcher.quoteReplacement(UriUtil.getWarSeparator()));
+                    Matcher.quoteReplacement(_arch.OUT_IURIUtility.getWarSeparator()));
         }
 
         return new URL("jar:" + baseExternal + "!/" + entryName);

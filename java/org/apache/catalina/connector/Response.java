@@ -63,6 +63,8 @@ import org.apache.tomcat.util.http.parser.MediaTypeCache;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.security.Escape;
 
+import server.ServerArch;
+
 /**
  * Wrapper object for the Coyote response.
  *
@@ -73,6 +75,8 @@ public class Response implements HttpServletResponse {
 
     private static final Log log = LogFactory.getLog(Response.class);
     protected static final StringManager sm = StringManager.getManager(Response.class);
+    
+    private static ServerArch _arch;
 
     private static final MediaTypeCache MEDIA_TYPE_CACHE = new MediaTypeCache(100);
 
@@ -110,6 +114,10 @@ public class Response implements HttpServletResponse {
 
 
     // ------------------------------------------------------------- Properties
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * Coyote response.
@@ -1627,7 +1635,7 @@ public class Response implements HttpServletResponse {
                 throw iae;
             }
 
-        } else if (leadingSlash || !UriUtil.hasScheme(location)) {
+        } else if (leadingSlash || !_arch.OUT_IURIUtility.hasScheme(location)) {
 
             redirectURLCC.recycle();
 

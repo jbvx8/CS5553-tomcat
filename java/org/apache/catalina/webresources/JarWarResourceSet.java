@@ -35,6 +35,8 @@ import org.apache.catalina.WebResourceRoot;
 import org.apache.tomcat.util.buf.UriUtil;
 import org.apache.tomcat.util.compat.JreCompat;
 
+import server.ServerArch;
+
 /**
  * Represents a {@link org.apache.catalina.WebResourceSet} based on a JAR file
  * that is nested inside a packed WAR file. This is only intended for internal
@@ -43,6 +45,12 @@ import org.apache.tomcat.util.compat.JreCompat;
 public class JarWarResourceSet extends AbstractArchiveResourceSet {
 
     private final String archivePath;
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
     /**
      * Creates a new {@link org.apache.catalina.WebResourceSet} based on a JAR
@@ -250,7 +258,7 @@ public class JarWarResourceSet extends AbstractArchiveResourceSet {
         }
 
         try {
-            setBaseUrl(UriUtil.buildJarSafeUrl(new File(getBase())));
+            setBaseUrl(_arch.OUT_IURIUtility.buildJarSafeUrl(new File(getBase())));
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(e);
         }
