@@ -21,6 +21,7 @@ import org.apache.catalina.core.StandardWrapperValve;
 import org.apache.catalina.filters.RemoteIpFilter;
 import org.apache.catalina.ha.tcp.SimpleTcpCluster;
 import org.apache.catalina.loader.WebappLoader;
+import org.apache.catalina.manager.ManagerServlet;
 import org.apache.catalina.realm.MessageDigestCredentialHandler;
 import org.apache.catalina.servlets.WebdavServlet;
 import org.apache.catalina.session.ManagerBase;
@@ -94,6 +95,7 @@ public class ServerImp implements IServerImp
         ContainerBase.setArch(_arch);
         ApplicationHttpRequest.setArch(_arch);
         RemoteIpFilter.XForwardedRequest.setArch(_arch);
+        ManagerServlet.setArch(_arch);
 	}
 	public void begin(){
 		System.setProperty("catalina.home", "C:\\Users\\Jackie\\Documents\\CS5553\\workspace\\tomcat\\output\\build");

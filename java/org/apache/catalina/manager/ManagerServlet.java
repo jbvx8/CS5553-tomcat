@@ -73,6 +73,8 @@ import org.apache.tomcat.util.net.SSLHostConfigCertificate;
 import org.apache.tomcat.util.res.StringManager;
 import org.apache.tomcat.util.security.Escape;
 
+import server.ServerArch;
+
 
 /**
  * Servlet that enables remote management of the web applications installed
@@ -164,6 +166,8 @@ import org.apache.tomcat.util.security.Escape;
  * @author Remy Maucherat
  */
 public class ManagerServlet extends HttpServlet implements ContainerServlet {
+    
+    private static ServerArch _arch;
 
     private static final long serialVersionUID = 1L;
 
@@ -233,6 +237,10 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
 
 
     // ----------------------------------------------- ContainerServlet Methods
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
 
     /**
@@ -593,7 +601,7 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
     protected void vmInfo(PrintWriter writer, StringManager smClient,
             Enumeration<Locale> requestedLocales) {
         writer.println(smClient.getString("managerServlet.vminfo"));
-        writer.print(Diagnostics.getVMInfo(requestedLocales));
+        writer.print(_arch.OUT_IDiagnostics.getVMInfo(requestedLocales));
     }
 
     /**
@@ -606,7 +614,7 @@ public class ManagerServlet extends HttpServlet implements ContainerServlet {
     protected void threadDump(PrintWriter writer, StringManager smClient,
             Enumeration<Locale> requestedLocales) {
         writer.println(smClient.getString("managerServlet.threaddump"));
-        writer.print(Diagnostics.getThreadDump(requestedLocales));
+        writer.print(_arch.OUT_IDiagnostics.getThreadDump(requestedLocales));
     }
 
 

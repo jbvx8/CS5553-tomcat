@@ -3,6 +3,8 @@ package server;
 
 import binarycodec.IBinaryCodec;
 
+import diagnostics.IDiagnostics;
+
 import edu.uci.isr.myx.fw.AbstractMyxSimpleBrick;
 import edu.uci.isr.myx.fw.IMyxName;
 import edu.uci.isr.myx.fw.MyxUtils;
@@ -37,6 +39,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public static final IMyxName msg_IFileUtil = MyxUtils.createName("fileutil.IFileUtil");
     public static final IMyxName msg_ILogUtility = MyxUtils.createName("logutil.ILogUtility");
     public static final IMyxName msg_IRequestUtility = MyxUtils.createName("requestutil.IRequestUtility");
+    public static final IMyxName msg_IDiagnostics = MyxUtils.createName("diagnostics.IDiagnostics");
 
     public IHTTPFileUpload OUT_IHTTPFileUpload;
     public IBinaryCodec OUT_IBinaryCodec;
@@ -46,6 +49,7 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
     public IFileUtil OUT_IFileUtil;
     public ILogUtility OUT_ILogUtility;
     public IRequestUtility OUT_IRequestUtility;
+    public IDiagnostics OUT_IDiagnostics;
 
 	private IServerImp _imp;
 
@@ -110,6 +114,11 @@ public class ServerArch extends AbstractMyxSimpleBrick implements IServer
         OUT_IRequestUtility = (IRequestUtility) MyxUtils.getFirstRequiredServiceObject(this,msg_IRequestUtility);
         if (OUT_IRequestUtility == null){
  			System.err.println("Error: Interface requestutil.IRequestUtility returned null");
+			return;       
+        }
+        OUT_IDiagnostics = (IDiagnostics) MyxUtils.getFirstRequiredServiceObject(this,msg_IDiagnostics);
+        if (OUT_IDiagnostics == null){
+ 			System.err.println("Error: Interface diagnostics.IDiagnostics returned null");
 			return;       
         }
         _imp.begin();
