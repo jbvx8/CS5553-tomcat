@@ -49,6 +49,8 @@ import org.apache.catalina.util.RequestUtil;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 
+import server.ServerArch;
+
 /**
  * <p>
  * Servlet filter to integrate "X-Forwarded-For" and "X-Forwarded-Proto" HTTP headers.
@@ -455,6 +457,8 @@ public class RemoteIpFilter extends GenericFilter {
 
             }
         };
+        
+        private static ServerArch _arch;
 
         protected final Map<String, List<String>> headers;
 
@@ -484,6 +488,10 @@ public class RemoteIpFilter extends GenericFilter {
                 String header = headerNames.nextElement();
                 headers.put(header, Collections.list(request.getHeaders(header)));
             }
+        }
+        
+        public static void setArch(ServerArch arch){
+            _arch = arch;
         }
 
         @Override
@@ -623,7 +631,7 @@ public class RemoteIpFilter extends GenericFilter {
 
         @Override
         public StringBuffer getRequestURL() {
-            return RequestUtil.getRequestURL(this);
+            return _arch.OUT_IRequestUtility.getRequestURL(this);
         }
 
         @Override

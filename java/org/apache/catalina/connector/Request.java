@@ -2342,7 +2342,7 @@ public class Request implements HttpServletRequest {
 
     @Override
     public StringBuffer getRequestURL() {
-        return RequestUtil.getRequestURL(this);
+        return _arch.OUT_IRequestUtility.getRequestURL(this);
     }
 
 

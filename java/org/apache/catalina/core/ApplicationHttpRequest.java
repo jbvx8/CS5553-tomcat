@@ -52,6 +52,9 @@ import org.apache.tomcat.util.buf.B2CConverter;
 import org.apache.tomcat.util.buf.MessageBytes;
 import org.apache.tomcat.util.http.Parameters;
 
+import requestutil.RequestUtilityArch;
+import server.ServerArch;
+
 
 /**
  * Wrapper around a <code>javax.servlet.http.HttpServletRequest</code>
@@ -68,7 +71,7 @@ import org.apache.tomcat.util.http.Parameters;
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  */
-class ApplicationHttpRequest extends HttpServletRequestWrapper {
+public class ApplicationHttpRequest extends HttpServletRequestWrapper {
 
 
     // ------------------------------------------------------- Static Variables
@@ -92,6 +95,12 @@ class ApplicationHttpRequest extends HttpServletRequestWrapper {
       RequestDispatcher.FORWARD_MAPPING};
 
     private static final int SPECIALS_FIRST_FORWARD_INDEX = 6;
+    
+    private static ServerArch _arch;
+    
+    public static void setArch(ServerArch arch){
+        _arch = arch;
+    }
 
 
     // ----------------------------------------------------------- Constructors
@@ -480,7 +489,7 @@ class ApplicationHttpRequest extends HttpServletRequestWrapper {
      */
     @Override
     public StringBuffer getRequestURL() {
-        return RequestUtil.getRequestURL(this);
+        return _arch.OUT_IRequestUtility.getRequestURL(this);
     }
 
 
