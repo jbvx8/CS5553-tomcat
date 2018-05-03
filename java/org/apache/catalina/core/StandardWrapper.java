@@ -1097,7 +1097,7 @@ public class StandardWrapper extends ContainerBase
                         getServletContext().log(log);
                     } else {
                         out.println(log);
-                    }
+                    }                                                                                                                     
                 }
             }
         }
